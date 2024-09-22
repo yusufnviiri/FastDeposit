@@ -1,11 +1,19 @@
 using Microsoft.AspNetCore.HttpOverrides;
 using SaccoOps.Extensions;
+using NLog;
 
 var builder = WebApplication.CreateBuilder(args);
+LogManager.LoadConfiguration(string.Concat(Directory.GetCurrentDirectory(),
+"/nlog.config"));
+
 
 // Add services to the container.
 builder.Services.ConfigureCors();
 builder.Services.ConfigureIISOptions();
+builder.Services.ConfigureLoggerService();
+builder.Services.AddAuthentication();
+builder.Services.ConfigureIdentity();
+
 
 builder.Services.AddControllers();
 
@@ -26,7 +34,7 @@ app.UseForwardedHeaders(new ForwardedHeadersOptions
 });
 app.UseCors("CorsPolicy");
 
-
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
