@@ -29,7 +29,7 @@ namespace SaccoOps.Extensions
                 o.Password.RequireLowercase = false;
                 o.Password.RequireUppercase = false;
                 o.Password.RequireNonAlphanumeric = false;
-                o.Password.RequiredLength = 4;
+                o.Password.RequiredLength = 6;
                 o.User.RequireUniqueEmail = true;
             })
             .AddEntityFrameworkStores<ApplicationDbContext>()

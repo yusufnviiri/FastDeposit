@@ -1,6 +1,7 @@
 ﻿using Entities.Models;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using Repository.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,7 +26,14 @@ namespace Repository
        .WithOne(p => p.User)
        .HasForeignKey(p => p.Id);
 
+            modelBuilder.ApplyConfiguration(new UserConfiguration());
+            modelBuilder.ApplyConfiguration(new RoleConfiguration());
+
+            modelBuilder.ApplyConfiguration(new UserRoleConfiguration());
+
             base.OnModelCreating(modelBuilder);
+
+
         }
 
         public DbSet<Deposit> Deposits { get; set; }
