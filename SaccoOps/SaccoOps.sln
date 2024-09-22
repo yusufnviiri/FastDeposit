@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.10.35013.160
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SaccoOps", "SaccoOps.csproj", "{7C4861D7-1CF9-46C2-BAFC-3F8D092DAD13}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7C4861D7-1CF9-46C2-BAFC-3F8D092DAD13}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7C4861D7-1CF9-46C2-BAFC-3F8D092DAD13}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7C4861D7-1CF9-46C2-BAFC-3F8D092DAD13}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7C4861D7-1CF9-46C2-BAFC-3F8D092DAD13}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {877F2122-01D4-4503-982E-C6E5AA2D5747}
+	EndGlobalSection
+EndGlobal
