@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.10.35013.160
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SaccoOps", "SaccoOps.csproj", "{7C4861D7-1CF9-46C2-BAFC-3F8D092DAD13}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SaccoOps", "SaccoOps.csproj", "{7C4861D7-1CF9-46C2-BAFC-3F8D092DAD13}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Contracts", "..\Contracts\Contracts.csproj", "{523FF95C-1361-4949-A683-8B91014EA30C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoggerService", "..\LoggerService\LoggerService.csproj", "{8C6DB821-1A22-4F4A-9B9C-72BDAE6D8B16}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{7C4861D7-1CF9-46C2-BAFC-3F8D092DAD13}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7C4861D7-1CF9-46C2-BAFC-3F8D092DAD13}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7C4861D7-1CF9-46C2-BAFC-3F8D092DAD13}.Release|Any CPU.Build.0 = Release|Any CPU
+		{523FF95C-1361-4949-A683-8B91014EA30C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{523FF95C-1361-4949-A683-8B91014EA30C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{523FF95C-1361-4949-A683-8B91014EA30C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{523FF95C-1361-4949-A683-8B91014EA30C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8C6DB821-1A22-4F4A-9B9C-72BDAE6D8B16}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8C6DB821-1A22-4F4A-9B9C-72BDAE6D8B16}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8C6DB821-1A22-4F4A-9B9C-72BDAE6D8B16}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8C6DB821-1A22-4F4A-9B9C-72BDAE6D8B16}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
