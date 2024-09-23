@@ -20,7 +20,7 @@ namespace Entities.BaseModels
 
         [ForeignKey(nameof(User))]
         [Column(TypeName = "nvarchar(450)")]
-        public string? Id { get; set; }
+        public string? UserId { get; set; }
         public User? User { get; set; }
     }
 }

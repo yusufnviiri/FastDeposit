@@ -20,17 +20,17 @@ namespace Repository
             modelBuilder.Entity<User>()
          .HasMany(b => b.Deposits)
          .WithOne(p => p.User)
-         .HasForeignKey(p => p.Id);
+         .HasForeignKey(p => p.UserId);
             modelBuilder.Entity<User>()
        .HasMany(b => b.Withdraws)
        .WithOne(p => p.User)
-       .HasForeignKey(p => p.Id);
+       .HasForeignKey(p => p.UserId);
 
             modelBuilder.ApplyConfiguration(new UserConfiguration());
             modelBuilder.ApplyConfiguration(new RoleConfiguration());
-
             modelBuilder.ApplyConfiguration(new UserRoleConfiguration());
-
+            modelBuilder.ApplyConfiguration(new WithdrawConfiguration());
+            modelBuilder.ApplyConfiguration(new DepositConfiguration());
             base.OnModelCreating(modelBuilder);
 
 
