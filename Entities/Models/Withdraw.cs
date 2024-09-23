@@ -17,5 +17,6 @@ namespace Entities.Models
         public int WithdrawId { get; set; }
 
 
+
     }
 }

@@ -22,5 +22,16 @@ namespace Entities.BaseModels
         [Column(TypeName = "nvarchar(450)")]
         public string? UserId { get; set; }
         public User? User { get; set; }
+
+        public void SetBalance(decimal balance,string marker)
+        {
+            switch (marker.ToLower())
+            {
+                case "withdraw": this.Balance = this.Amount - balance; break;
+                case "deposit":this.Balance = this.Amount + balance;break;
+                default:this.Balance = balance; break;
+            }
+           
+        }
     }
 }
