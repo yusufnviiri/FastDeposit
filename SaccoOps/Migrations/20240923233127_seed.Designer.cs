@@ -12,7 +12,7 @@ using Repository;
 namespace SaccoOps.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240923172044_seed")]
+    [Migration("20240923233127_seed")]
     partial class seed
     {
         /// <inheritdoc />
@@ -60,7 +60,7 @@ namespace SaccoOps.Migrations
                             DepositId = 5,
                             Amount = 3393000m,
                             Balance = 93000m,
-                            TransactionDate = "23/9/2024 at 20:20",
+                            TransactionDate = "24/9/2024 at 2:31",
                             UserId = "100"
                         },
                         new
@@ -68,7 +68,7 @@ namespace SaccoOps.Migrations
                             DepositId = 6,
                             Amount = 9342000m,
                             Balance = 11100m,
-                            TransactionDate = "23/9/2024 at 20:20",
+                            TransactionDate = "24/9/2024 at 2:31",
                             UserId = "100"
                         },
                         new
@@ -76,7 +76,7 @@ namespace SaccoOps.Migrations
                             DepositId = 7,
                             Amount = 5108000m,
                             Balance = 333700m,
-                            TransactionDate = "23/9/2024 at 20:20",
+                            TransactionDate = "24/9/2024 at 2:31",
                             UserId = "100"
                         },
                         new
@@ -84,7 +84,7 @@ namespace SaccoOps.Migrations
                             DepositId = 8,
                             Amount = 88887100m,
                             Balance = 63800m,
-                            TransactionDate = "23/9/2024 at 20:20",
+                            TransactionDate = "24/9/2024 at 2:31",
                             UserId = "100"
                         },
                         new
@@ -92,7 +92,7 @@ namespace SaccoOps.Migrations
                             DepositId = 1,
                             Amount = 78523000m,
                             Balance = 3000m,
-                            TransactionDate = "23/9/2024 at 20:20",
+                            TransactionDate = "24/9/2024 at 2:31",
                             UserId = "101"
                         },
                         new
@@ -100,7 +100,7 @@ namespace SaccoOps.Migrations
                             DepositId = 2,
                             Amount = 465112000m,
                             Balance = 9200m,
-                            TransactionDate = "23/9/2024 at 20:20",
+                            TransactionDate = "24/9/2024 at 2:31",
                             UserId = "101"
                         },
                         new
@@ -108,7 +108,7 @@ namespace SaccoOps.Migrations
                             DepositId = 3,
                             Amount = 76908000m,
                             Balance = 7372900m,
-                            TransactionDate = "23/9/2024 at 20:20",
+                            TransactionDate = "24/9/2024 at 2:31",
                             UserId = "101"
                         },
                         new
@@ -116,7 +116,7 @@ namespace SaccoOps.Migrations
                             DepositId = 4,
                             Amount = 453547100m,
                             Balance = 83900m,
-                            TransactionDate = "23/9/2024 at 20:20",
+                            TransactionDate = "24/9/2024 at 2:31",
                             UserId = "101"
                         });
                 });
@@ -199,13 +199,13 @@ namespace SaccoOps.Migrations
                         {
                             Id = "100",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "7466480a-fab1-4dee-a24f-d1c9093aed03",
+                            ConcurrencyStamp = "ed60f635-1aba-4291-843d-10166cf8474d",
                             Email = "admin@admin.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@ADMIN.COM",
                             NormalizedUserName = "ADMIN@ADMIN.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEIGbHSyoFHINLRF+HRI+mlR2Q9BQmVp1bo5PFnR9B34if9xah9Q9QOb71PLzkQGG/g==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEKqby9mot/rvPh9o5W+1mj5BVYZWPFmsY+yK+iDonfpSeyHHSts4EyR9a5TMlT2xDQ==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "",
                             TwoFactorEnabled = false,
@@ -215,13 +215,13 @@ namespace SaccoOps.Migrations
                         {
                             Id = "101",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "18cd5a21-cfa1-401c-89a3-a7e82e32c5fe",
+                            ConcurrencyStamp = "37ad5538-3617-4e6f-ac89-2af0c92af104",
                             Email = "member@member.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "MEMBER@MEMBER.COM",
                             NormalizedUserName = "MEMBER@MEMBER.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEBClOhdUnyDFRVOHbWt9q9gZ2ffhCnKQntIaoXsDA2fv3+yY6nldzJP0u09K8rtllQ==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEOjUtMT/eyIk0uMxYQUWjZc42PtnJPWbtj+UoeLvC6tQoMb3bieK2KlFx7FT7E/8Zg==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "",
                             TwoFactorEnabled = false,
@@ -264,7 +264,7 @@ namespace SaccoOps.Migrations
                             WithdrawId = 1,
                             Amount = 523000m,
                             Balance = 3000m,
-                            TransactionDate = "23/9/2024 at 20:20",
+                            TransactionDate = "24/9/2024 at 2:31",
                             UserId = "101"
                         },
                         new
@@ -272,7 +272,7 @@ namespace SaccoOps.Migrations
                             WithdrawId = 2,
                             Amount = 112000m,
                             Balance = 9200m,
-                            TransactionDate = "23/9/2024 at 20:20",
+                            TransactionDate = "24/9/2024 at 2:31",
                             UserId = "101"
                         },
                         new
@@ -280,7 +280,7 @@ namespace SaccoOps.Migrations
                             WithdrawId = 3,
                             Amount = 908000m,
                             Balance = 7372900m,
-                            TransactionDate = "23/9/2024 at 20:20",
+                            TransactionDate = "24/9/2024 at 2:31",
                             UserId = "101"
                         },
                         new
@@ -288,7 +288,7 @@ namespace SaccoOps.Migrations
                             WithdrawId = 4,
                             Amount = 547100m,
                             Balance = 83900m,
-                            TransactionDate = "23/9/2024 at 20:20",
+                            TransactionDate = "24/9/2024 at 2:31",
                             UserId = "101"
                         },
                         new
@@ -296,7 +296,7 @@ namespace SaccoOps.Migrations
                             WithdrawId = 5,
                             Amount = 523000m,
                             Balance = 3000m,
-                            TransactionDate = "23/9/2024 at 20:20",
+                            TransactionDate = "24/9/2024 at 2:31",
                             UserId = "100"
                         },
                         new
@@ -304,7 +304,7 @@ namespace SaccoOps.Migrations
                             WithdrawId = 6,
                             Amount = 112000m,
                             Balance = 9200m,
-                            TransactionDate = "23/9/2024 at 20:20",
+                            TransactionDate = "24/9/2024 at 2:31",
                             UserId = "100"
                         },
                         new
@@ -312,7 +312,7 @@ namespace SaccoOps.Migrations
                             WithdrawId = 7,
                             Amount = 908000m,
                             Balance = 7372900m,
-                            TransactionDate = "23/9/2024 at 20:20",
+                            TransactionDate = "24/9/2024 at 2:31",
                             UserId = "100"
                         },
                         new
@@ -320,7 +320,7 @@ namespace SaccoOps.Migrations
                             WithdrawId = 8,
                             Amount = 547100m,
                             Balance = 83900m,
-                            TransactionDate = "23/9/2024 at 20:20",
+                            TransactionDate = "24/9/2024 at 2:31",
                             UserId = "100"
                         });
                 });

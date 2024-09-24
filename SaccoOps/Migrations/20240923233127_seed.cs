@@ -220,8 +220,8 @@ namespace SaccoOps.Migrations
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "FirstName", "LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName", "WithdrawId" },
                 values: new object[,]
                 {
-                    { "100", 0, "7466480a-fab1-4dee-a24f-d1c9093aed03", "admin@admin.com", true, null, null, false, null, "ADMIN@ADMIN.COM", "ADMIN@ADMIN.COM", "AQAAAAIAAYagAAAAEIGbHSyoFHINLRF+HRI+mlR2Q9BQmVp1bo5PFnR9B34if9xah9Q9QOb71PLzkQGG/g==", null, false, "", false, "admin@admin.com", null },
-                    { "101", 0, "18cd5a21-cfa1-401c-89a3-a7e82e32c5fe", "member@member.com", true, null, null, false, null, "MEMBER@MEMBER.COM", "MEMBER@MEMBER.COM", "AQAAAAIAAYagAAAAEBClOhdUnyDFRVOHbWt9q9gZ2ffhCnKQntIaoXsDA2fv3+yY6nldzJP0u09K8rtllQ==", null, false, "", false, "member@member.com", null }
+                    { "100", 0, "ed60f635-1aba-4291-843d-10166cf8474d", "admin@admin.com", true, null, null, false, null, "ADMIN@ADMIN.COM", "ADMIN@ADMIN.COM", "AQAAAAIAAYagAAAAEKqby9mot/rvPh9o5W+1mj5BVYZWPFmsY+yK+iDonfpSeyHHSts4EyR9a5TMlT2xDQ==", null, false, "", false, "admin@admin.com", null },
+                    { "101", 0, "37ad5538-3617-4e6f-ac89-2af0c92af104", "member@member.com", true, null, null, false, null, "MEMBER@MEMBER.COM", "MEMBER@MEMBER.COM", "AQAAAAIAAYagAAAAEOjUtMT/eyIk0uMxYQUWjZc42PtnJPWbtj+UoeLvC6tQoMb3bieK2KlFx7FT7E/8Zg==", null, false, "", false, "member@member.com", null }
                 });
 
             migrationBuilder.InsertData(
@@ -238,14 +238,14 @@ namespace SaccoOps.Migrations
                 columns: new[] { "DepositId", "Amount", "Balance", "TransactionDate", "UserId" },
                 values: new object[,]
                 {
-                    { 1, 78523000m, 3000m, "23/9/2024 at 20:20", "101" },
-                    { 2, 465112000m, 9200m, "23/9/2024 at 20:20", "101" },
-                    { 3, 76908000m, 7372900m, "23/9/2024 at 20:20", "101" },
-                    { 4, 453547100m, 83900m, "23/9/2024 at 20:20", "101" },
-                    { 5, 3393000m, 93000m, "23/9/2024 at 20:20", "100" },
-                    { 6, 9342000m, 11100m, "23/9/2024 at 20:20", "100" },
-                    { 7, 5108000m, 333700m, "23/9/2024 at 20:20", "100" },
-                    { 8, 88887100m, 63800m, "23/9/2024 at 20:20", "100" }
+                    { 1, 78523000m, 3000m, "24/9/2024 at 2:31", "101" },
+                    { 2, 465112000m, 9200m, "24/9/2024 at 2:31", "101" },
+                    { 3, 76908000m, 7372900m, "24/9/2024 at 2:31", "101" },
+                    { 4, 453547100m, 83900m, "24/9/2024 at 2:31", "101" },
+                    { 5, 3393000m, 93000m, "24/9/2024 at 2:31", "100" },
+                    { 6, 9342000m, 11100m, "24/9/2024 at 2:31", "100" },
+                    { 7, 5108000m, 333700m, "24/9/2024 at 2:31", "100" },
+                    { 8, 88887100m, 63800m, "24/9/2024 at 2:31", "100" }
                 });
 
             migrationBuilder.InsertData(
@@ -253,14 +253,14 @@ namespace SaccoOps.Migrations
                 columns: new[] { "WithdrawId", "Amount", "Balance", "TransactionDate", "UserId" },
                 values: new object[,]
                 {
-                    { 1, 523000m, 3000m, "23/9/2024 at 20:20", "101" },
-                    { 2, 112000m, 9200m, "23/9/2024 at 20:20", "101" },
-                    { 3, 908000m, 7372900m, "23/9/2024 at 20:20", "101" },
-                    { 4, 547100m, 83900m, "23/9/2024 at 20:20", "101" },
-                    { 5, 523000m, 3000m, "23/9/2024 at 20:20", "100" },
-                    { 6, 112000m, 9200m, "23/9/2024 at 20:20", "100" },
-                    { 7, 908000m, 7372900m, "23/9/2024 at 20:20", "100" },
-                    { 8, 547100m, 83900m, "23/9/2024 at 20:20", "100" }
+                    { 1, 523000m, 3000m, "24/9/2024 at 2:31", "101" },
+                    { 2, 112000m, 9200m, "24/9/2024 at 2:31", "101" },
+                    { 3, 908000m, 7372900m, "24/9/2024 at 2:31", "101" },
+                    { 4, 547100m, 83900m, "24/9/2024 at 2:31", "101" },
+                    { 5, 523000m, 3000m, "24/9/2024 at 2:31", "100" },
+                    { 6, 112000m, 9200m, "24/9/2024 at 2:31", "100" },
+                    { 7, 908000m, 7372900m, "24/9/2024 at 2:31", "100" },
+                    { 8, 547100m, 83900m, "24/9/2024 at 2:31", "100" }
                 });
 
             migrationBuilder.CreateIndex(

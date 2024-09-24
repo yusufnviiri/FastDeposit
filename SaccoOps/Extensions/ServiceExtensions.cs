@@ -1,8 +1,12 @@
 ﻿using Contracts;
+using Contracts.ServiceContracts;
 using Entities.Models;
 using LoggerService;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Repository;
+using Repository.DbMethods;
+using Services;
 
 namespace SaccoOps.Extensions
 {
@@ -35,6 +39,13 @@ namespace SaccoOps.Extensions
             .AddEntityFrameworkStores<ApplicationDbContext>()
             .AddDefaultTokenProviders();
         }
+        public static void ConfigureRepositorymanager(this IServiceCollection services)=>services.AddScoped<IRepositoryManager,RepositoryManager>();
+        public static void ConfigureserviceManager(this IServiceCollection services)=> services.AddScoped<IServiceManager,ServiceManager>();
+        public static void ConfigureSqlContext(this IServiceCollection services,
+            IConfiguration configuration) =>
+            services.AddDbContext<ApplicationDbContext>(opts =>
+            opts.UseSqlServer(configuration.GetConnectionString("sqlConnection")));
+
 
     }
 }

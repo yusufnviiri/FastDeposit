@@ -13,6 +13,11 @@ builder.Services.ConfigureIISOptions();
 builder.Services.ConfigureLoggerService();
 builder.Services.AddAuthentication();
 builder.Services.ConfigureIdentity();
+builder.Services.ConfigureRepositorymanager();
+builder.Services.ConfigureserviceManager();
+builder.Services.ConfigureSqlContext(builder.Configuration);
+
+
 
 
 builder.Services.AddControllers();
