@@ -59,6 +59,8 @@ public class UserConfiguration:IEntityTypeConfiguration<User>
                 EmailConfirmed = true,
                 PasswordHash = hasher.HashPassword(null, "Admin1!"),
                 SecurityStamp = string.Empty,
+                FirstName="Romeru",
+                LastName="Lukaku"
                 //Deposits=deposits,
                 //Withdraws=withdraws,
                 
@@ -74,6 +76,8 @@ public class UserConfiguration:IEntityTypeConfiguration<User>
              EmailConfirmed = true,
              PasswordHash = hasher.HashPassword(null, "User12!"),
              SecurityStamp = string.Empty,
+                FirstName = "Dimitar",
+                LastName = "Berbatov"
                 //Deposits = deposits2,
                 //Withdraws = withdraws2,
 

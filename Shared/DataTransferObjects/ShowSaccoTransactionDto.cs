@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 
 namespace Shared.DataTransferObjects
 {
-  public abstract record SaccoTransaction()
-    {
-    }
+    public record ShowSaccoTransactionDto( decimal Amount, decimal Balance,string TransactionDate);
+ 
 }

@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.HttpOverrides;
 using SaccoOps.Extensions;
 using NLog;
+using AutoMapper;
 
 var builder = WebApplication.CreateBuilder(args);
 LogManager.LoadConfiguration(string.Concat(Directory.GetCurrentDirectory(),
@@ -16,6 +17,8 @@ builder.Services.ConfigureIdentity();
 builder.Services.ConfigureRepositorymanager();
 builder.Services.ConfigureserviceManager();
 builder.Services.ConfigureSqlContext(builder.Configuration);
+builder.Services.AddAutoMapper(typeof(Program));
+
 
 builder.Services.AddControllers()
 .AddApplicationPart(typeof(Presentation.AssemblyReference).Assembly);

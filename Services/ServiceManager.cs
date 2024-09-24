@@ -1,4 +1,5 @@
-﻿using Contracts;
+﻿using AutoMapper;
+using Contracts;
 using Contracts.ServiceContracts;
 using Repository.DbMethods;
 using System;
@@ -14,10 +15,10 @@ namespace Services
       
         private readonly Lazy<IWithdrawService> _withdrawService;
         private readonly Lazy<IDepositService> _depositService;
-        public ServiceManager(ILoggerManager logger,IRepositoryManager repositoryManager)
+        public ServiceManager(ILoggerManager logger,IRepositoryManager repositoryManager,IMapper mapper)
         {
-            _withdrawService = new Lazy<IWithdrawService>(() => new WithdrawService(logger, repositoryManager));
-            _depositService = new Lazy<IDepositService>(() => new DepositService(logger,repositoryManager));
+            _withdrawService = new Lazy<IWithdrawService>(() => new WithdrawService(logger, repositoryManager,mapper));
+            _depositService = new Lazy<IDepositService>(() => new DepositService(logger,repositoryManager,mapper));
         }
         public IWithdrawService WithdrawService => _withdrawService.Value;
         public IDepositService DepositService => _depositService.Value;

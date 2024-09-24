@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Entities.Models;
+using Shared.DataTransferObjects;
+using AutoMapper;
 
 namespace Services
 {
@@ -14,19 +16,23 @@ namespace Services
     {
         private readonly IRepositoryManager _repo;
         private readonly ILoggerManager _logger;
+        private readonly IMapper _mapper;
 
-        public DepositService(ILoggerManager logger, IRepositoryManager repositoryManager)
+
+        public DepositService(ILoggerManager logger, IRepositoryManager repositoryManager,IMapper mapper)
         {
             _repo = repositoryManager;
             _logger = logger;
+            _mapper = mapper;
         }
 
-        public IEnumerable<Deposit> GetAllDeposits(bool tracking)
+        public IEnumerable<ShowSaccoTransactionDto> GetAllDeposits(bool tracking)
         {
             try
             {
                 var deposits = _repo.DepositManager.GetAllDeposits(tracking);
-                return deposits;
+                var result = _mapper.Map<IEnumerable<ShowSaccoTransactionDto>>(deposits);
+                return result;
             }
             catch (Exception ex)
             {
