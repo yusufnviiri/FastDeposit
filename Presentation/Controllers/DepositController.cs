@@ -21,15 +21,12 @@ namespace Presentation.Controllers
         [HttpGet]
 
         public IActionResult GetDeposits() {
-            try
-            {
-                var deposits = _service.DepositService.GetAllDeposits(tracking: false);
+          
+            var deposits = _service.DepositService.GetAllDeposits(tracking: false);
                 return Ok(deposits);
+
             }
-            catch 
-            {
-                return StatusCode(500, "Internal server error");
-            }
-        }
+            
+        
     }
 }

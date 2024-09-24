@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.HttpOverrides;
 using SaccoOps.Extensions;
 using NLog;
 using AutoMapper;
+using Contracts;
 
 var builder = WebApplication.CreateBuilder(args);
 LogManager.LoadConfiguration(string.Concat(Directory.GetCurrentDirectory(),
@@ -24,12 +25,14 @@ builder.Services.AddControllers()
 .AddApplicationPart(typeof(Presentation.AssemblyReference).Assembly);
 
 var app = builder.Build();
+var logger = app.Services.GetRequiredService<ILoggerManager>();
+app.ConfigureExceptionHandler(logger);
+if (app.Environment.IsProduction())
+    app.UseHsts();
+
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-    app.UseDeveloperExceptionPage();
-else
-    app.UseHsts();
+
 
 
 app.UseHttpsRedirection();

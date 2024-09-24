@@ -28,17 +28,12 @@ namespace Services
 
         public IEnumerable<ShowSaccoTransactionDto> GetAllDeposits(bool tracking)
         {
-            try
-            {
-                var deposits = _repo.DepositManager.GetAllDeposits(tracking);
+            
+
+            var deposits = _repo.DepositManager.GetAllDeposits(tracking);
                 var result = _mapper.Map<IEnumerable<ShowSaccoTransactionDto>>(deposits);
                 return result;
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError($"Something went wrong in method {nameof(GetAllDeposits)} {ex}");
-                throw;
-            }
+           
         }
     }
 }
