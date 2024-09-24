@@ -13,7 +13,7 @@ namespace Services
     { private readonly IRepositoryManager _repositoryManager;
         private readonly ILoggerManager _loggerManager;
 
-        public WithdrawService(ILoggerManager logger,RepositoryManager repositoryManager)
+        public WithdrawService(ILoggerManager logger,IRepositoryManager repositoryManager)
         {
             _repositoryManager = repositoryManager;
             _loggerManager = logger;

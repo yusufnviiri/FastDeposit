@@ -6,18 +6,33 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Entities.Models;
 
 namespace Services
 {
-    internal sealed class DepositService:IDepositService
+    internal sealed class DepositService : IDepositService
     {
-        private readonly IRepositoryManager _repositoryManager;
-        private readonly ILoggerManager _loggerManager;
+        private readonly IRepositoryManager _repo;
+        private readonly ILoggerManager _logger;
 
-        public DepositService(ILoggerManager logger, RepositoryManager repositoryManager)
+        public DepositService(ILoggerManager logger, IRepositoryManager repositoryManager)
         {
-            _repositoryManager = repositoryManager;
-            _loggerManager = logger;
+            _repo = repositoryManager;
+            _logger = logger;
+        }
+
+        public IEnumerable<Deposit> GetAllDeposits(bool tracking)
+        {
+            try
+            {
+                var deposits = _repo.DepositManager.GetAllDeposits(tracking);
+                return deposits;
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError($"Something went wrong in method {nameof(GetAllDeposits)} {ex}");
+                throw;
+            }
         }
     }
 }

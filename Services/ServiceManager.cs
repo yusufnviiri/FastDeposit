@@ -14,7 +14,7 @@ namespace Services
       
         private readonly Lazy<IWithdrawService> _withdrawService;
         private readonly Lazy<IDepositService> _depositService;
-        public ServiceManager(ILoggerManager logger,RepositoryManager repositoryManager)
+        public ServiceManager(ILoggerManager logger,IRepositoryManager repositoryManager)
         {
             _withdrawService = new Lazy<IWithdrawService>(() => new WithdrawService(logger, repositoryManager));
             _depositService = new Lazy<IDepositService>(() => new DepositService(logger,repositoryManager));

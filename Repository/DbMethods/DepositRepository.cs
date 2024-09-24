@@ -14,5 +14,6 @@ namespace Repository.DbMethods
         {
             
         }
+        public IEnumerable<Deposit> GetAllDeposits(bool tracking)=>FindAll(tracking).OrderBy(k=>k.Amount).ToList();
     }
 }
