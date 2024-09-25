@@ -3,6 +3,7 @@ using SaccoOps.Extensions;
 using NLog;
 using AutoMapper;
 using Contracts;
+using SaccoOps.ActionFilters;
 
 var builder = WebApplication.CreateBuilder(args);
 LogManager.LoadConfiguration(string.Concat(Directory.GetCurrentDirectory(),
@@ -19,6 +20,8 @@ builder.Services.ConfigureRepositorymanager();
 builder.Services.ConfigureserviceManager();
 builder.Services.ConfigureSqlContext(builder.Configuration);
 builder.Services.AddAutoMapper(typeof(Program));
+builder.Services.AddScoped<ValidationFilterAttribute>();
+
 
 
 builder.Services.AddControllers()

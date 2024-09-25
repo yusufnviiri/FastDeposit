@@ -36,8 +36,10 @@ namespace Presentation.Controllers
         }
 
         [HttpPost]
+        [ServiceFilter(typeof(ValidationFilterAttribute))]
 
-        public async Task< IActionResult> CreateDeposit(CreateSaccoTransactionDto transaction)
+
+        public async Task< IActionResult> CreateDeposit( [FromBody] CreateSaccoTransactionDto transaction)
         {
            var depositDto =await _service.DepositService.CreateDeposit(transaction);
             return CreatedAtRoute("depositId", new { id = 2 }, depositDto);
