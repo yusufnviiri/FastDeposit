@@ -11,5 +11,6 @@ namespace Contracts.ServiceContracts
    public interface IAuthenticationService
     {
         Task<IdentityResult>RegisterUser(UserRegistrationDto userRegistrationDto);
+        Task<string>LoginUser(UserLoginDto userLoginDto);   
     }
 }

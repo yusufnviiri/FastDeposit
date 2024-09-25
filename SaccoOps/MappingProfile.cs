@@ -12,9 +12,10 @@ namespace SaccoOps
             //CreateMap<Deposit, ShowSaccoTransactionDto>().ForCtorParam("Id", opt => opt.MapFrom(p => p.DepositId));
             CreateMap<Withdraw, ShowSaccoTransactionDto>();
             CreateMap<Deposit, ShowSaccoTransactionDto>();
-           // CreateMap< ShowSaccoTransactionDto, Deposit>();
-            CreateMap<UserRegistrationDto, User>();
-           
+            // CreateMap< ShowSaccoTransactionDto, Deposit>();
+            CreateMap<UserRegistrationDto, User>()
+        .ForMember(u => u.UserName, opt => opt.MapFrom(x => x.Email));
+
 
 
         }

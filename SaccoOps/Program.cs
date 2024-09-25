@@ -20,6 +20,7 @@ builder.Services.ConfigureserviceManager();
 builder.Services.ConfigureSqlContext(builder.Configuration);
 builder.Services.AddAutoMapper(typeof(Program));
 builder.Services.AddScoped<ValidationFilterAttribute>();
+builder.Services.ConfigureJWT(builder.Configuration);
 
 
 
