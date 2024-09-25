@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using Entities.Models;
 using Shared.DataTransferObjects;
 using AutoMapper;
+using Entities.Exceptions;
 
 namespace Services
 {
@@ -26,14 +27,19 @@ namespace Services
             _mapper = mapper;
         }
 
-        public IEnumerable<ShowSaccoTransactionDto> GetAllDeposits(bool tracking)
-        {
-            
-
-            var deposits = _repo.DepositManager.GetAllDeposits(tracking);
+        public async Task<IEnumerable<ShowSaccoTransactionDto>> GetAllDeposits(bool tracking)
+        {            
+            var deposits = await _repo.DepositManager.GetAllDeposits(tracking);
                 var result = _mapper.Map<IEnumerable<ShowSaccoTransactionDto>>(deposits);
-                return result;
-           
+                return result;           
+        }
+
+        public async Task<ShowSaccoTransactionDto> GetDepositById(int Id, bool tracking) { 
+        var deposit = await _repo.DepositManager.FindDepositById(Id, tracking);
+            if (deposit == null) { throw new DepositNotFoundException(Id); }
+            var depositDto =_mapper.Map<ShowSaccoTransactionDto>(deposit);
+            return depositDto;
+        
         }
     }
 }

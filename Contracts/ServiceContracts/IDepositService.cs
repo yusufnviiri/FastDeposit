@@ -10,6 +10,7 @@ namespace Contracts.ServiceContracts
 {
    public interface IDepositService
     {
-        IEnumerable<ShowSaccoTransactionDto> GetAllDeposits(bool tracking);
+        Task<IEnumerable<ShowSaccoTransactionDto>> GetAllDeposits(bool tracking);
+        Task<ShowSaccoTransactionDto> GetDepositById(int Id,bool tracking);
     }
 }

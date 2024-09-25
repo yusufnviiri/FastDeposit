@@ -1,5 +1,6 @@
 ﻿using Contracts;
 using Entities.Models;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,6 +15,8 @@ namespace Repository.DbMethods
         {
             
         }
-        public IEnumerable<Deposit> GetAllDeposits(bool tracking)=>FindAll(tracking).OrderBy(k=>k.Amount).ToList();
+        public async Task<IEnumerable<Deposit>> GetAllDeposits(bool tracking)=> await FindAll(tracking).OrderBy(k=>k.Amount).ToListAsync();
+
+        public async Task<Deposit> FindDepositById(int id, bool tracking)=> await  FindByCondition(k=>k.DepositId.Equals(id),tracking).SingleOrDefaultAsync();
     }
 }

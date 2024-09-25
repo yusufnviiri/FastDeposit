@@ -20,13 +20,20 @@ namespace Presentation.Controllers
         }
         [HttpGet]
 
-        public IActionResult GetDeposits() {
-          
+        public IActionResult GetDeposits() {          
             var deposits = _service.DepositService.GetAllDeposits(tracking: false);
                 return Ok(deposits);
-
             }
-            
+
+        [HttpGet("{id:int}")]
+
+        public IActionResult GetDeposits(int id)
+        { 
+         var deposit = _service.DepositService.GetDepositById(id,tracking: false);
+            return Ok(deposit);
         
-    }
+        }
+
+
+        }
 }

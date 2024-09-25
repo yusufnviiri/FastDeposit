@@ -9,6 +9,7 @@ namespace Contracts
 {
     public interface IDepositRepository
     {
-        IEnumerable<Deposit> GetAllDeposits(bool tracking);
+       Task<IEnumerable<Deposit>> GetAllDeposits(bool tracking);
+        Task<Deposit> FindDepositById(int id,bool tracking);
     }
 }
