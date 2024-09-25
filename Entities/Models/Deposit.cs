@@ -12,6 +12,7 @@ namespace Entities.Models
     {
         //[Column(TypeName = "nvarchar(450)")]
         //public string? DepositId { get; set; }
-        public int DepositId { get; set; }
+        [Column("DepositId")]
+        public int Id { get; set; }
     }
 }

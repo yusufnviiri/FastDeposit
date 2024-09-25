@@ -24,20 +24,20 @@ namespace SaccoOps.Migrations
 
             modelBuilder.Entity("Entities.Models.Deposit", b =>
                 {
-                    b.Property<int>("DepositId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("int")
+                        .HasColumnName("DepositId");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("DepositId"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<decimal>("Amount")
+                    b.Property<decimal?>("Amount")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<decimal>("Balance")
+                    b.Property<decimal?>("Balance")
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<string>("TransactionDate")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("UserId")
@@ -45,7 +45,7 @@ namespace SaccoOps.Migrations
                         .HasMaxLength(60)
                         .HasColumnType("nvarchar(450)");
 
-                    b.HasKey("DepositId");
+                    b.HasKey("Id");
 
                     b.HasIndex("UserId");
 
@@ -54,66 +54,66 @@ namespace SaccoOps.Migrations
                     b.HasData(
                         new
                         {
-                            DepositId = 5,
+                            Id = 5,
                             Amount = 3393000m,
                             Balance = 93000m,
-                            TransactionDate = "24/9/2024 at 2:31",
+                            TransactionDate = "25/9/2024 at 22:40",
                             UserId = "100"
                         },
                         new
                         {
-                            DepositId = 6,
+                            Id = 6,
                             Amount = 9342000m,
                             Balance = 11100m,
-                            TransactionDate = "24/9/2024 at 2:31",
+                            TransactionDate = "25/9/2024 at 22:40",
                             UserId = "100"
                         },
                         new
                         {
-                            DepositId = 7,
+                            Id = 7,
                             Amount = 5108000m,
                             Balance = 333700m,
-                            TransactionDate = "24/9/2024 at 2:31",
+                            TransactionDate = "25/9/2024 at 22:40",
                             UserId = "100"
                         },
                         new
                         {
-                            DepositId = 8,
+                            Id = 8,
                             Amount = 88887100m,
                             Balance = 63800m,
-                            TransactionDate = "24/9/2024 at 2:31",
+                            TransactionDate = "25/9/2024 at 22:40",
                             UserId = "100"
                         },
                         new
                         {
-                            DepositId = 1,
+                            Id = 1,
                             Amount = 78523000m,
                             Balance = 3000m,
-                            TransactionDate = "24/9/2024 at 2:31",
+                            TransactionDate = "25/9/2024 at 22:40",
                             UserId = "101"
                         },
                         new
                         {
-                            DepositId = 2,
+                            Id = 2,
                             Amount = 465112000m,
                             Balance = 9200m,
-                            TransactionDate = "24/9/2024 at 2:31",
+                            TransactionDate = "25/9/2024 at 22:40",
                             UserId = "101"
                         },
                         new
                         {
-                            DepositId = 3,
+                            Id = 3,
                             Amount = 76908000m,
                             Balance = 7372900m,
-                            TransactionDate = "24/9/2024 at 2:31",
+                            TransactionDate = "25/9/2024 at 22:40",
                             UserId = "101"
                         },
                         new
                         {
-                            DepositId = 4,
+                            Id = 4,
                             Amount = 453547100m,
                             Balance = 83900m,
-                            TransactionDate = "24/9/2024 at 2:31",
+                            TransactionDate = "25/9/2024 at 22:40",
                             UserId = "101"
                         });
                 });
@@ -196,13 +196,15 @@ namespace SaccoOps.Migrations
                         {
                             Id = "100",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "ed60f635-1aba-4291-843d-10166cf8474d",
+                            ConcurrencyStamp = "9dd117c6-af20-4c5d-aa3f-85fca3a03786",
                             Email = "admin@admin.com",
                             EmailConfirmed = true,
+                            FirstName = "Romeru",
+                            LastName = "Lukaku",
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@ADMIN.COM",
                             NormalizedUserName = "ADMIN@ADMIN.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEKqby9mot/rvPh9o5W+1mj5BVYZWPFmsY+yK+iDonfpSeyHHSts4EyR9a5TMlT2xDQ==",
+                            PasswordHash = "AQAAAAIAAYagAAAAECT+v3zxXege+iYs+T+AnSfjdrpWX0Drdk3Saru9LUd5OTXWC5c8jOcvsndR7aDe1Q==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "",
                             TwoFactorEnabled = false,
@@ -212,13 +214,15 @@ namespace SaccoOps.Migrations
                         {
                             Id = "101",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "37ad5538-3617-4e6f-ac89-2af0c92af104",
+                            ConcurrencyStamp = "dc33ce1d-35c8-4a2f-a4a8-90db4de17fb1",
                             Email = "member@member.com",
                             EmailConfirmed = true,
+                            FirstName = "Dimitar",
+                            LastName = "Berbatov",
                             LockoutEnabled = false,
                             NormalizedEmail = "MEMBER@MEMBER.COM",
                             NormalizedUserName = "MEMBER@MEMBER.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEOjUtMT/eyIk0uMxYQUWjZc42PtnJPWbtj+UoeLvC6tQoMb3bieK2KlFx7FT7E/8Zg==",
+                            PasswordHash = "AQAAAAIAAYagAAAAENtVaOBItCZvmjTfBASfV5VX6/278WjrmjPf9OmhtnyGLzkOb1AsEFeIveKaFLeXow==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "",
                             TwoFactorEnabled = false,
@@ -228,20 +232,20 @@ namespace SaccoOps.Migrations
 
             modelBuilder.Entity("Entities.Models.Withdraw", b =>
                 {
-                    b.Property<int>("WithdrawId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("int")
+                        .HasColumnName("WithdrawId");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("WithdrawId"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<decimal>("Amount")
+                    b.Property<decimal?>("Amount")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<decimal>("Balance")
+                    b.Property<decimal?>("Balance")
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<string>("TransactionDate")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("UserId")
@@ -249,7 +253,7 @@ namespace SaccoOps.Migrations
                         .HasMaxLength(60)
                         .HasColumnType("nvarchar(450)");
 
-                    b.HasKey("WithdrawId");
+                    b.HasKey("Id");
 
                     b.HasIndex("UserId");
 
@@ -258,66 +262,66 @@ namespace SaccoOps.Migrations
                     b.HasData(
                         new
                         {
-                            WithdrawId = 1,
+                            Id = 1,
                             Amount = 523000m,
                             Balance = 3000m,
-                            TransactionDate = "24/9/2024 at 2:31",
+                            TransactionDate = "25/9/2024 at 22:40",
                             UserId = "101"
                         },
                         new
                         {
-                            WithdrawId = 2,
+                            Id = 2,
                             Amount = 112000m,
                             Balance = 9200m,
-                            TransactionDate = "24/9/2024 at 2:31",
+                            TransactionDate = "25/9/2024 at 22:40",
                             UserId = "101"
                         },
                         new
                         {
-                            WithdrawId = 3,
+                            Id = 3,
                             Amount = 908000m,
                             Balance = 7372900m,
-                            TransactionDate = "24/9/2024 at 2:31",
+                            TransactionDate = "25/9/2024 at 22:40",
                             UserId = "101"
                         },
                         new
                         {
-                            WithdrawId = 4,
+                            Id = 4,
                             Amount = 547100m,
                             Balance = 83900m,
-                            TransactionDate = "24/9/2024 at 2:31",
+                            TransactionDate = "25/9/2024 at 22:40",
                             UserId = "101"
                         },
                         new
                         {
-                            WithdrawId = 5,
+                            Id = 5,
                             Amount = 523000m,
                             Balance = 3000m,
-                            TransactionDate = "24/9/2024 at 2:31",
+                            TransactionDate = "25/9/2024 at 22:40",
                             UserId = "100"
                         },
                         new
                         {
-                            WithdrawId = 6,
+                            Id = 6,
                             Amount = 112000m,
                             Balance = 9200m,
-                            TransactionDate = "24/9/2024 at 2:31",
+                            TransactionDate = "25/9/2024 at 22:40",
                             UserId = "100"
                         },
                         new
                         {
-                            WithdrawId = 7,
+                            Id = 7,
                             Amount = 908000m,
                             Balance = 7372900m,
-                            TransactionDate = "24/9/2024 at 2:31",
+                            TransactionDate = "25/9/2024 at 22:40",
                             UserId = "100"
                         },
                         new
                         {
-                            WithdrawId = 8,
+                            Id = 8,
                             Amount = 547100m,
                             Balance = 83900m,
-                            TransactionDate = "24/9/2024 at 2:31",
+                            TransactionDate = "25/9/2024 at 22:40",
                             UserId = "100"
                         });
                 });

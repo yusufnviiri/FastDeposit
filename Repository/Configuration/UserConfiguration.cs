@@ -30,14 +30,14 @@ public class UserConfiguration:IEntityTypeConfiguration<User>
 
 
 
-            var withrawOne1 = new Withdraw {WithdrawId=5, Amount = 523000, Balance = 3000 };
-            var withrawTwo2 = new Withdraw { WithdrawId =6, Amount = 112000, Balance = 9200 };
-            var withrawThree3 = new Withdraw { WithdrawId =7, Amount = 908000, Balance = 7372900 };
-            var withrawFour4 = new Withdraw { WithdrawId =8, Amount = 547100, Balance = 83900 };
-            var withrawOne = new Withdraw { WithdrawId = 1, Amount = 523000, Balance = 3000 };
-            var withrawTwo = new Withdraw { WithdrawId = 2, Amount = 112000, Balance = 9200 };
-            var withrawThree = new Withdraw { WithdrawId = 3, Amount = 908000, Balance = 7372900 };
-            var withrawFour = new Withdraw { WithdrawId = 4, Amount = 547100, Balance = 83900 };
+            //var withrawOne1 = new Withdraw {Id=5, Amount = 523000, Balance = 3000 };
+            //var withrawTwo2 = new Withdraw { Id =6, Amount = 112000, Balance = 9200 };
+            //var withrawThree3 = new Withdraw { Id =7, Amount = 908000, Balance = 7372900 };
+            //var withrawFour4 = new Withdraw {Id =8, Amount = 547100, Balance = 83900 };
+            //var withrawOne = new Withdraw { Id = 1, Amount = 523000, Balance = 3000 };
+            //var withrawTwo = new Withdraw { Id = 2, Amount = 112000, Balance = 9200 };
+            //var withrawThree = new Withdraw { Id = 3, Amount = 908000, Balance = 7372900 };
+            //var withrawFour = new Withdraw { Id = 4, Amount = 547100, Balance = 83900 };
             //List<Deposit> deposits2 = new List<Deposit> { depositOne1, depositTwo2, depositThree3, depositFour4 };
             //List<Withdraw> withdraws2 = new List<Withdraw> { withrawOne1, withrawTwo2, withrawThree3, withrawFour4 };
 

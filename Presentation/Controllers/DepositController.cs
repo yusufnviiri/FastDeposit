@@ -1,6 +1,7 @@
 ﻿using Contracts.ServiceContracts;
 using Microsoft.AspNetCore.Mvc;
 using Shared.DataTransferObjects;
+using Entities.ErrorModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;

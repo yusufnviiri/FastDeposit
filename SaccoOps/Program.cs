@@ -3,8 +3,7 @@ using SaccoOps.Extensions;
 using NLog;
 using AutoMapper;
 using Contracts;
-using SaccoOps.ActionFilters;
-
+using Entities.ErrorModel;
 var builder = WebApplication.CreateBuilder(args);
 LogManager.LoadConfiguration(string.Concat(Directory.GetCurrentDirectory(),
 "/nlog.config"));

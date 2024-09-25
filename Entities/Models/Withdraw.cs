@@ -14,7 +14,9 @@ namespace Entities.Models
         //[Column(TypeName = "nvarchar(450)")]
 
         //public string? WithdrawId { get; set; }
-        public int WithdrawId { get; set; }
+        [Column("WithdrawId")]
+
+        public int Id{ get; set; }
 
 
 
