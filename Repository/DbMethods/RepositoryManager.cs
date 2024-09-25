@@ -21,6 +21,6 @@ namespace Repository.DbMethods
         }
         public IDepositRepository DepositManager=> _depositRepository.Value;
         public IWithdrawRepository WithdrawManager => _withdrawRepository.Value;
-        public void Save()=>_context.SaveChanges();
+        public async Task SaveAsync()=>await _context.SaveChangesAsync();
     }
 }
