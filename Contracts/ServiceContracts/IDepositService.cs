@@ -12,5 +12,6 @@ namespace Contracts.ServiceContracts
     {
         Task<IEnumerable<ShowSaccoTransactionDto>> GetAllDeposits(bool tracking);
         Task<ShowSaccoTransactionDto> GetDepositById(int Id,bool tracking);
+        Task<ShowSaccoTransactionDto> CreateDeposit(CreateSaccoTransactionDto transaction);
     }
 }

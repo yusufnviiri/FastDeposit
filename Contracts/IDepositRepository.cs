@@ -11,5 +11,6 @@ namespace Contracts
     {
        Task<IEnumerable<Deposit>> GetAllDeposits(bool tracking);
         Task<Deposit> FindDepositById(int id,bool tracking);
+        void CreateDeposit(Deposit deposit);
     }
 }

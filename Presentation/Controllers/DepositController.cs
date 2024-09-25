@@ -1,5 +1,6 @@
 ﻿using Contracts.ServiceContracts;
 using Microsoft.AspNetCore.Mvc;
+using Shared.DataTransferObjects;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,7 +26,7 @@ namespace Presentation.Controllers
                 return Ok(deposits);
             }
 
-        [HttpGet("{id:int}")]
+        [HttpGet("{id:int}",Name ="depositId")]
 
         public IActionResult GetDeposits(int id)
         { 
@@ -34,6 +35,14 @@ namespace Presentation.Controllers
         
         }
 
+        [HttpPost]
+
+        public async Task< IActionResult> CreateDeposit(CreateSaccoTransactionDto transaction)
+        {
+           var depositDto =await _service.DepositService.CreateDeposit(transaction);
+            return CreatedAtRoute("depositId", new { id = depositDto.Id }, depositDto);
+        
+        }
 
         }
 }

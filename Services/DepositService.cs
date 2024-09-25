@@ -41,5 +41,15 @@ namespace Services
             return depositDto;
         
         }
+        public async Task<ShowSaccoTransactionDto> CreateDeposit(CreateSaccoTransactionDto tranaction)
+        {
+            var deposit = new Deposit();
+            deposit.Amount= tranaction.Amount;
+            _repo.DepositManager.CreateDeposit(deposit);
+
+            await _repo.SaveAsync();
+            var depositDto = _mapper.Map<ShowSaccoTransactionDto>(deposit);
+            return depositDto;
+        }
     }
 }
