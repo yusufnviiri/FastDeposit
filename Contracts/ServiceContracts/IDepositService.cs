@@ -11,7 +11,9 @@ namespace Contracts.ServiceContracts
    public interface IDepositService
     {
         Task<IEnumerable<ShowSaccoTransactionDto>> GetAllDeposits(bool tracking);
-        Task<ShowSaccoTransactionDto> GetDepositById(int Id,bool tracking);
+        //Task<ShowSaccoTransactionDto> GetDepositById(int Id,bool tracking);
+        Task<ShowSaccoTransactionDto> GetDepositById(int Id, bool tracking);
+
         Task<ShowSaccoTransactionDto> CreateDeposit(CreateSaccoTransactionDto transaction);
     }
 }

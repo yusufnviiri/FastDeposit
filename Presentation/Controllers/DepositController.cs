@@ -21,16 +21,16 @@ namespace Presentation.Controllers
         }
         [HttpGet]
 
-        public IActionResult GetDeposits() {          
-            var deposits = _service.DepositService.GetAllDeposits(tracking: false);
+        public async Task< IActionResult> GetDeposits() {          
+            var deposits = await _service.DepositService.GetAllDeposits(tracking: false);
                 return Ok(deposits);
             }
 
         [HttpGet("{id:int}",Name ="depositId")]
 
-        public IActionResult GetDeposits(int id)
+        public  async Task< IActionResult> GetDeposits(int id)
         { 
-         var deposit = _service.DepositService.GetDepositById(id,tracking: false);
+         var deposit =await _service.DepositService.GetDepositById(id,tracking: false);
             return Ok(deposit);
         
         }
@@ -40,7 +40,7 @@ namespace Presentation.Controllers
         public async Task< IActionResult> CreateDeposit(CreateSaccoTransactionDto transaction)
         {
            var depositDto =await _service.DepositService.CreateDeposit(transaction);
-            return CreatedAtRoute("depositId", new { id = depositDto.Id }, depositDto);
+            return CreatedAtRoute("depositId", new { id = 2 }, depositDto);
         
         }
 
