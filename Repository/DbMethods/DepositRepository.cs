@@ -16,7 +16,14 @@ namespace Repository.DbMethods
         {
             
         }
-        public async Task<IEnumerable<Deposit>> GetAllDeposits(bool tracking, DepositParameters depositParameters) => await FindAll(tracking).OrderBy(k=>k.Amount).Skip((depositParameters.PageNumber-1)*depositParameters.PageSize).Take(depositParameters.PageSize).ToListAsync();
+        public async Task<PagedList<Deposit>> GetAllDeposits(bool tracking, DepositParameters depositParameters) { 
+            
+           var deposits = await FindAll(tracking).OrderBy(k => k.Amount).Skip((depositParameters.PageNumber-1)*depositParameters.PageSize).Take(depositParameters.PageSize).ToListAsync();
+
+            var count = await FindAll(tracking).CountAsync();
+            //return PagedList<Deposit>.ToPageList(deposits, depositParameters.PageNumber,depositParameters.PageSize);
+            return new PagedList<Deposit>(deposits, count,depositParameters.PageNumber, depositParameters.PageSize);
+        }
 
         public async Task<Deposit> FindDepositById(int id, bool tracking)=> await  FindByCondition(k=>k.Id.Equals(id),tracking).SingleOrDefaultAsync();
 

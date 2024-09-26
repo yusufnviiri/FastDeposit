@@ -28,12 +28,12 @@ namespace Services
             _mapper = mapper;
         }
 
-        public async Task<IEnumerable<ShowSaccoTransactionDto>> GetAllDeposits(bool tracking, DepositParameters depositParameters)
+        public async Task<(IEnumerable<ShowSaccoTransactionDto> deposits, MetaData metaData)> GetAllDeposits(bool tracking, DepositParameters depositParameters)
         {            
-            var deposits = await _repo.DepositManager.GetAllDeposits(tracking,depositParameters);
-                var result = _mapper.Map<IEnumerable<ShowSaccoTransactionDto>>(deposits);
-           
-                return result;           
+            var depositsFromDb = await _repo.DepositManager.GetAllDeposits(tracking,depositParameters);
+                var depositDto = _mapper.Map<IEnumerable<ShowSaccoTransactionDto>>(depositsFromDb);
+
+            return (deposits: depositDto, MetaData: depositsFromDb.MetaData);
         }
 
         //public async Task<ShowSaccoTransactionDto> GetDepositById(int Id, bool tracking) { 

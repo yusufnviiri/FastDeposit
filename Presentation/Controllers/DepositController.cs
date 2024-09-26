@@ -9,6 +9,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc.RazorPages;
+using System.Text.Json;
 
 namespace Presentation.Controllers
 {
@@ -26,8 +28,9 @@ namespace Presentation.Controllers
         [HttpGet]
 
         public async Task< IActionResult> GetDeposits([FromQuery] DepositParameters depositParameters) {          
-            var deposits = await _service.DepositService.GetAllDeposits(tracking: false,depositParameters);
-                return Ok(deposits);
+            var pagedResults = await _service.DepositService.GetAllDeposits(tracking: false,depositParameters);
+            Response.Headers.Add("X-Pagination",JsonSerializer.Serialize(pagedResults.metaData));
+            return Ok(pagedResults.deposits);
             }
 
         [HttpGet("{id:int}",Name ="depositId")]
