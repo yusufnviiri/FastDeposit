@@ -36,7 +36,8 @@ namespace Services
 
         public async Task<IdentityResult> RegisterUser(UserRegistrationDto userRegistrationDto)
         {
-            var user = _mapper.Map<User>(userRegistrationDto);
+            User user = new();
+             user = _mapper.Map<User>(userRegistrationDto);
             var result = await _userManager.CreateAsync(user, userRegistrationDto.Password);
             if (result.Succeeded)
             {
@@ -51,12 +52,12 @@ namespace Services
                 var user = await _userManager.FindByNameAsync(model.Email);
                 if (user != null && await _userManager.CheckPasswordAsync(user, model.Password))
                 {
-                var secretKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("secretoftheuniverse"));
+                var secretKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("therearepeoplewhoarefitforworktherearepeoplewhoarefitforworktherearepeoplewhoarefitforworktherearepeoplewhoarefitforworktherearepeoplewhoarefitforwork"));
                 var signinCredentials = new SigningCredentials(secretKey, SecurityAlgorithms.HmacSha256);
                 var claimer = new[] { new Claim(ClaimTypes.NameIdentifier, user.UserName), new Claim(ClaimTypes.Role,"member") };
                 var tokeOptions = new JwtSecurityToken(
-                    issuer: "https://localhost:5001",
-                    audience: "https://localhost:5001",
+                    issuer: "https://localhost:5000",
+                    audience: "https://localhost:5000",
                     claims: claimer,
                     expires: DateTime.Now.AddMinutes(9),
                     signingCredentials: signinCredentials

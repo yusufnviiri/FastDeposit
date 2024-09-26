@@ -17,7 +17,10 @@ namespace Presentation.Controllers
 
         private readonly IServiceManager _service;
 
-
+        public AuthController(IServiceManager service)
+        {
+            _service = service;
+        }
         [HttpPost("register")]
         public async Task< IActionResult> RegisterUser([FromBody] UserRegistrationDto user)
         {
@@ -28,6 +31,16 @@ namespace Presentation.Controllers
             return Ok(res);
             
       
+        }
+        [HttpPost("login")]
+        public async Task<IActionResult> LoginUser([FromBody] UserLoginDto user)
+        {
+            if (user == null || !ModelState.IsValid)
+                return BadRequest();
+            var res = await _service.AuthenticationService.LoginUser(user);
+            return Ok(res);
+
+
         }
     }
 }
