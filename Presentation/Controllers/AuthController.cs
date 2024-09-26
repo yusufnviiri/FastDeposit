@@ -35,10 +35,19 @@ namespace Presentation.Controllers
         [HttpPost("login")]
         public async Task<IActionResult> LoginUser([FromBody] UserLoginDto user)
         {
-            if (user == null || !ModelState.IsValid)
-                return BadRequest();
-            var res = await _service.AuthenticationService.LoginUser(user);
-            return Ok(res);
+            //if (user == null || !ModelState.IsValid)
+            //    return BadRequest();
+            //var res = await _service.AuthenticationService.LoginUser(user);
+            //return Ok(res);
+
+
+            if (!await _service.AuthenticationService.LoginUser(user))
+                return Unauthorized();
+            return Ok(new
+            {
+                Token = await _service.AuthenticationService.CreateToken()
+            });
+
 
 
         }
