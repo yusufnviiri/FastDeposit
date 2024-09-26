@@ -10,6 +10,7 @@ using Entities.Models;
 using Shared.DataTransferObjects;
 using AutoMapper;
 using Entities.Exceptions;
+using Shared.RequestParameters;
 
 namespace Services
 {
@@ -27,9 +28,9 @@ namespace Services
             _mapper = mapper;
         }
 
-        public async Task<IEnumerable<ShowSaccoTransactionDto>> GetAllDeposits(bool tracking)
+        public async Task<IEnumerable<ShowSaccoTransactionDto>> GetAllDeposits(bool tracking, DepositParameters depositParameters)
         {            
-            var deposits = await _repo.DepositManager.GetAllDeposits(tracking);
+            var deposits = await _repo.DepositManager.GetAllDeposits(tracking,depositParameters);
                 var result = _mapper.Map<IEnumerable<ShowSaccoTransactionDto>>(deposits);
            
                 return result;           

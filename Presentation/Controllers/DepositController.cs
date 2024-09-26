@@ -25,8 +25,8 @@ namespace Presentation.Controllers
         [Authorize]
         [HttpGet]
 
-        public async Task< IActionResult> GetDeposits() {          
-            var deposits = await _service.DepositService.GetAllDeposits(tracking: false);
+        public async Task< IActionResult> GetDeposits([FromQuery] DepositParameters depositParameters) {          
+            var deposits = await _service.DepositService.GetAllDeposits(tracking: false,depositParameters);
                 return Ok(deposits);
             }
 
