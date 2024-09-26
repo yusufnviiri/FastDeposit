@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Shared.DataTransferObjects;
 using Entities.ErrorModel;
+using Shared.RequestParameters;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -31,7 +32,7 @@ namespace Presentation.Controllers
 
         [HttpGet("{id:int}",Name ="depositId")]
 
-        public  async Task< IActionResult> GetDeposits(int id)
+        public  async Task< IActionResult> GetDeposits( [FromQuery] DepositParameters depositParameters,int id)
         { 
          var deposit =await _service.DepositService.GetDepositById(id,tracking: false);
             return Ok(deposit);
