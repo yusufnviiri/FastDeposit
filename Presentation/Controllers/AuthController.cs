@@ -26,7 +26,13 @@ namespace Presentation.Controllers
         {
             if (user == null || !ModelState.IsValid)
                 return BadRequest();
-            var res = await _service.AuthenticationService.RegisterUser(user); 
+            var res = await _service.AuthenticationService.RegisterUser(user);
+
+            var username = User.Identity.Name;
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier); // The user's ID
+            var userEmail = User.FindFirstValue(ClaimTypes.Email);        // The user's email
+            var userName = User.FindFirstValue(ClaimTypes.Name);          // The user's username
+
 
             return Ok(res);
             

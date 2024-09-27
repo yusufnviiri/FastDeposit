@@ -51,10 +51,11 @@ namespace Services
             return depositDto;
 
         }
-        public async Task<ShowSaccoTransactionDto> CreateDeposit(CreateSaccoTransactionDto tranaction)
+        public async Task<ShowSaccoTransactionDto> CreateDeposit(CreateSaccoTransactionDto transaction, string Id)
         {
             var deposit = new Deposit();
-            deposit.Amount= tranaction.Amount;
+            deposit.Amount= transaction.Amount;
+            deposit.UserId = Id;
             //deposit.SetBalance(7000, "deposit");
             _repo.DepositManager.CreateDeposit(deposit);
 

@@ -48,52 +48,10 @@ namespace Services
             }
             return result;
         }
-        //public async Task<string>LoginUser(UserLoginDto model)
-        //{
-
-          
-        //        var user = await _userManager.FindByNameAsync(model.Email);
-        //        if (user != null && await _userManager.CheckPasswordAsync(user, model.Password))
-        //        {
-        //        //var secretKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("therearepeoplewhoarefitforworktherearepeoplewhoarefitforworktherearepeoplewhoarefitforworktherearepeoplewhoarefitforworktherearepeoplewhoarefitforwork"));
-        //        var secretKey= new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Environment.GetEnvironmentVariable("SECRET")));
-        //        var signinCredentials = new SigningCredentials(secretKey, SecurityAlgorithms.HmacSha256);
-        //        var claimer = new[] { new Claim(ClaimTypes.NameIdentifier, user.UserName), new Claim(ClaimTypes.Role,"member") };
-        //        var tokeOptions = new JwtSecurityToken(
-        //            issuer: "https://localhost:5000",
-        //            audience: "https://localhost:5000",
-        //            claims: claimer,
-        //            expires: DateTime.Now.AddMinutes(9),
-        //            signingCredentials: signinCredentials
-        //        );
-
-        //        var tokenString = new JwtSecurityTokenHandler().WriteToken(tokeOptions);
-        //        return tokenString;
-        //    }
-
-        //        return null;
-        //    }
-
-            //private JwtSecurityToken GenerateJwtToken(IEnumerable<Claim> claims)
-            //{
-            //    var authSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]));
-
-            //    var token = new JwtSecurityToken(
-            //        issuer: _configuration["Jwt:Issuer"],
-            //        audience: _configuration["Jwt:Audience"],
-            //        expires: DateTime.Now.AddMinutes(Convert.ToDouble(_configuration["Jwt:ExpireMinutes"])),
-            //        claims: claims,
-            //        signingCredentials: new SigningCredentials(authSigningKey, SecurityAlgorithms.HmacSha256)
-            //    );
-
-            //    return token;
-            //}
-
-
-
-        public async Task<bool> LoginUser(UserLoginDto userForAuth)
+             public async Task<bool> LoginUser(UserLoginDto userForAuth)
         {
             _user = await _userManager.FindByNameAsync(userForAuth.Email);
+            
             var result = (_user != null && await _userManager.CheckPasswordAsync(_user,
            userForAuth.Password));
             if (!result)
@@ -111,26 +69,32 @@ namespace Services
         }
         private SigningCredentials GetSigningCredentials()
         {
-            var secretKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("therearepeoplewhoarefitforworktherearepeoplewhoarefitforworktherearepeoplewhoarefitforworktherearepeoplewhoarefitforworktherearepeoplewhoarefitforwork"));
-            //var key = Encoding.UTF8.GetBytes(Environment.GetEnvironmentVariable("SECRET"));
-            //var secret = new SymmetricSecurityKey(key);
+            var secretKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("therfitforworktheroarefitearepeoplewhoareforworkthearepeoplewhoarearepeoplewh"));
+         
             return new SigningCredentials(secretKey, SecurityAlgorithms.HmacSha256);
         }
         private async Task<List<Claim>> GetClaims()
-        { 
-            var claims = new List<Claim> {new Claim(ClaimTypes.Name, _user.UserName)
- };
+        {
+            var idClaim = new Claim(ClaimTypes.Actor,_user.Id);
+            var claims = new List<Claim> {new Claim(ClaimTypes.Name, _user.UserName) };
+
             var roles = await _userManager.GetRolesAsync(_user);
-            foreach (var role in roles)
+            var role = roles.FirstOrDefault();
+            if (role != null)
             {
                 claims.Add(new Claim(ClaimTypes.Role, role));
             }
+            claims.Add( new Claim(ClaimTypes.Actor, _user.Id));
+            //foreach (var role in roles)
+            //{
+            //    claims.Add(new Claim(ClaimTypes.Role, role));
+            //}
             return claims;
         }
 
 
         private JwtSecurityToken GenerateTokenOptions(SigningCredentials signingCredentials,
-List<Claim> claims)
+               List<Claim> claims)
         {
             var jwtSettings = _configuration.GetSection("JwtSettings");
             var tokenOptions = new JwtSecurityToken

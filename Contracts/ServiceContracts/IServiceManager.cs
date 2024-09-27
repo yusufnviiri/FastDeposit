@@ -10,6 +10,7 @@ namespace Contracts.ServiceContracts
     {
         IWithdrawService WithdrawService { get; }
         IDepositService DepositService { get; }
+        IGetUserDetails getUserDetails {  get; }
         IAuthenticationService AuthenticationService { get; }
     }
 }
