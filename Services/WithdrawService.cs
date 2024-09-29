@@ -1,7 +1,11 @@
 ﻿using AutoMapper;
 using Contracts;
 using Contracts.ServiceContracts;
+using Entities.Models;
+using Microsoft.CodeAnalysis;
 using Repository.DbMethods;
+using Shared.DataTransferObjects;
+using Shared.RequestParameters;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,5 +25,15 @@ namespace Services
             _loggerManager = logger;
             _mapper = mapper;
         }
+
+        public async Task<(IEnumerable<ShowSaccoTransactionDto> Withdraws, MetaData Data)>AllWithdraws(WithdrawParameters withdrawParameters,bool tracking)
+        {
+            var withdrawsWithMetaData= await _repositoryManager.WithdrawManager.GetAllWithdraws(tracking, withdrawParameters);
+            var result = _mapper.Map<IEnumerable<ShowSaccoTransactionDto>>(withdrawsWithMetaData);
+
+            return (Withdraws:result, Data: withdrawsWithMetaData.MetaData);
+
+        }
+
     }
 }

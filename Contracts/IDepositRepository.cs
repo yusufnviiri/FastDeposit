@@ -12,7 +12,7 @@ namespace Contracts
     public interface IDepositRepository
     {
        Task<PagedList<Deposit>> GetAllDeposits(bool tracking, DepositParameters depositParameters);
-        Task<Deposit> FindDepositById( int id,bool tracking);
+       Task<Deposit> FindDepositById( int id,bool tracking);
         void CreateDeposit(Deposit deposit);
     }
 }
