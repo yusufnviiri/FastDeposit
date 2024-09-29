@@ -15,10 +15,10 @@ namespace Services
 {
     public sealed class GetUserDetails:IGetUserDetails
     {
-        private  IHttpContextAccessor _context ;
+        private IHttpContextAccessor _context { get; set; }
 
         public User AuthenticatedUserDetails(IHttpContextAccessor httpContext)
-        { ;
+        { 
 
             _context = httpContext;
             var User = _context.HttpContext.User;        

@@ -27,18 +27,19 @@ namespace Presentation.Controllers
             _service = service;
             _context = httpContext;
         }
-        [Authorize]
         [HttpGet]
+        //[Authorize]
+
 
         public async Task< IActionResult> GetDeposits([FromQuery] DepositParameters depositParameters)
         {
             var username = User.Identity.Name;
             var pagedResults = await _service.DepositService.GetAllDeposits(tracking: false,depositParameters);
-
+            Console.WriteLine(username);
             Response.Headers.Add("X-Pagination",JsonSerializer.Serialize(pagedResults.metaData));
             return Ok(pagedResults.deposits);
             }
-
+        
         [HttpGet("{id:int}",Name ="depositId")]
 
         public  async Task< IActionResult> GetDeposits( [FromQuery] DepositParameters depositParameters,int id)
@@ -47,13 +48,12 @@ namespace Presentation.Controllers
             return Ok(deposit);
         
         }
-        [Authorize]
+        //[Authorize]
         [HttpPost("create")]
         [ServiceFilter(typeof(ValidationFilterAttribute))]
         public async Task< IActionResult> CreateDeposit( [FromBody] CreateSaccoTransactionDto transaction)
         {
             var user = _service.getUserDetails.AuthenticatedUserDetails(_context);
-
             var depositDto =await _service.DepositService.CreateDeposit(transaction,user.Id);
             return CreatedAtRoute("depositId", new { id = 3 }, depositDto);
         

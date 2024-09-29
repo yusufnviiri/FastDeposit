@@ -20,7 +20,7 @@ namespace Entities.ErrorModel
             var controller = context.RouteData.Values["controller"];
 
             var param = context.ActionArguments.SingleOrDefault(k => k.Value.ToString().Contains("Dto")).Value;
-            if (param != null)
+            if (param is null)
             {
                 context.Result = new BadRequestObjectResult($"Object is null. Controller {controller}, action: {action} ");
                 return;

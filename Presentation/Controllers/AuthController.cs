@@ -22,7 +22,7 @@ namespace Presentation.Controllers
             _service = service;
         }
         [HttpPost("register")]
-        public async Task< IActionResult> RegisterUser([FromBody] UserRegistrationDto user)
+        public async Task<IActionResult> RegisterUser([FromBody] UserRegistrationDto user)
         {
             if (user == null || !ModelState.IsValid)
                 return BadRequest();
@@ -35,8 +35,8 @@ namespace Presentation.Controllers
 
 
             return Ok(res);
-            
-      
+
+
         }
         [HttpPost("login")]
         public async Task<IActionResult> LoginUser([FromBody] UserLoginDto user)
@@ -46,13 +46,15 @@ namespace Presentation.Controllers
             //var res = await _service.AuthenticationService.LoginUser(user);
             //return Ok(res);
 
-
-            if (!await _service.AuthenticationService.LoginUser(user))
-                return Unauthorized();
-            return Ok(new
-            {
-                Token = await _service.AuthenticationService.CreateToken()
-            });
+            var auth = await _service.AuthenticationService.LoginUser(user);
+            if (!auth) { 
+            return Unauthorized(); }
+        else{
+                return Ok(new
+                {
+                    Token = await _service.AuthenticationService.CreateToken()
+                });
+            };
 
 
 

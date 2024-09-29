@@ -54,7 +54,7 @@ namespace SaccoOps.Extensions
         {
             var jwtSettings = configuration.GetSection("JwtSettings");
             //var secretKey = Environment.GetEnvironmentVariable("SECRET");
-            var secretKey = "therearepeoplewhoarefitforworktherearepeoplewhoarefitforworktherearepeoplewhoarefitforworktherearepeoplewhoarefitforworktherearepeoplewhoarefitforwork";
+            var secretKey = "therfitforworktheroarefitearepeoplewhoareforworkthearepeoplewhoarearepeoplewh";
             services.AddAuthentication(opt =>
             {
                 opt.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
