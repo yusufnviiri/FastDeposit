@@ -1,4 +1,5 @@
 ﻿using Entities.Models;
+using Shared.DataTransferObjects;
 using Shared.RequestParameters;
 using System;
 using System.Collections.Generic;
@@ -11,5 +12,7 @@ namespace Contracts
    public interface IWithdrawRepository
     {
         Task<PagedList<Withdraw>> GetAllWithdraws(bool tracking,WithdrawParameters withdrawParameters);
+        void CreateWithdraw(Withdraw transactionDto);
+        Task<Withdraw> GetLastWithdraw();
     }
 }

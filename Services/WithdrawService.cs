@@ -34,6 +34,18 @@ namespace Services
             return (Withdraws:result, Data: withdrawsWithMetaData.MetaData);
 
         }
+        public async Task CreateWithdrawAsync(CreateSaccoTransactionDto transactionDto)
+        {
+            var lastWithdraw = await _repositoryManager.WithdrawManager.GetLastWithdraw();
+            Withdraw withdraw = new Withdraw()
+            {
+                Amount = transactionDto.Amount,
+            };
+            withdraw.SetBalance((decimal)lastWithdraw.Balance,"withdraw");
+
+            _repositoryManager.WithdrawManager.CreateWithdraw(withdraw);
+            await _repositoryManager.SaveAsync();
+        }
 
     }
 }

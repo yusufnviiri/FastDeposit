@@ -16,12 +16,24 @@ namespace Repository.DbMethods
 
         public async Task<PagedList<Withdraw>> GetAllWithdraws(bool tracking,WithdrawParameters parameters)
         {
-            var withdraws= await FindAll(tracking).OrderBy(k=>k.Balance).Skip((parameters.PageNumber-1)*parameters.PageSize).Take(parameters.PageSize).ToListAsync();
+
+
+            var withdraws= await FindAll(tracking).OrderByDescending(k=>k.Id).Skip((parameters.PageNumber-1)*parameters.PageSize).Take(parameters.PageSize).ToListAsync();
             var count = await FindAll(tracking).CountAsync();
             return new PagedList<Withdraw>(withdraws, count,parameters.PageNumber,parameters.PageSize);
 
         }
+        public void CreateWithdraw(Withdraw transaction)
+        {
 
+             Create(transaction);
+        }
+        public async Task<Withdraw> GetLastWithdraw()
+        {
+            var withdraw = await FindAll(tracking: false).ToListAsync();
+            return withdraw.LastOrDefault();
+
+        }
 
     }
 }

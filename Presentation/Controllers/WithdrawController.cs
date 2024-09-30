@@ -1,6 +1,7 @@
 ﻿using Contracts.ServiceContracts;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Shared.DataTransferObjects;
 using Shared.RequestParameters;
 using System;
 using System.Collections.Generic;
@@ -26,6 +27,11 @@ namespace Presentation.Controllers
             Response.Headers.Add("X-Pagination", JsonSerializer.Serialize(pagedResults.Data));
 
             return Ok(pagedResults.Withdraws);
+        }
+        [HttpPost]
+        public async Task<IActionResult> CreateWithdraw([FromBody] CreateSaccoTransactionDto createWithdraw)
+        {
+            return Ok();
         }
     }
 }

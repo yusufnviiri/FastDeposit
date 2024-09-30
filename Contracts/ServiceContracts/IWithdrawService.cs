@@ -11,5 +11,7 @@ namespace Contracts.ServiceContracts
    public interface IWithdrawService
     {
         Task<(IEnumerable<ShowSaccoTransactionDto> Withdraws,MetaData Data)> AllWithdraws(WithdrawParameters withdrawParameters,bool tracking);
+
+        Task CreateWithdrawAsync(CreateSaccoTransactionDto transactionDto);
     }
 }
