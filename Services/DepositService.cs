@@ -68,6 +68,6 @@ namespace Services
 
         public async Task<ShowSaccoTransactionDto> GetLastDeposit(bool tracking, DepositParameters parameters) {
             var deposits = await GetAllDeposits(tracking, parameters);
-            return deposits.deposits.LastOrDefault();
+            return deposits.deposits.FirstOrDefault();
     }
     } }

@@ -17,7 +17,6 @@ namespace Contracts.ServiceContracts
 
         Task<ShowSaccoTransactionDto> CreateDeposit(CreateSaccoTransactionDto transaction,string Id);
 
-        Task<ShowSaccoTransactionDto> GetLastDeposit(bool tracking, DepositParameters parameters);
         
     }
 }
