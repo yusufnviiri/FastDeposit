@@ -16,11 +16,14 @@ namespace Repository.DbMethods
         {
             
         }
-        public async Task<PagedList<Deposit>> GetAllDeposits(bool tracking, DepositParameters depositParameters) { 
-            
-           var deposits = await FindAll(tracking).Skip((depositParameters.PageNumber-1)*depositParameters.PageSize).Take(depositParameters.PageSize).ToListAsync();
-
+        public async Task<PagedList<Deposit>> GetAllDeposits(bool tracking, DepositParameters depositParameters) {
             var count = await FindAll(tracking).CountAsync();
+            var maxPages = Math.Ceiling((double)(count / (double)depositParameters.PageSize));
+            if (depositParameters.PageNumber == 1) { depositParameters.PageNumber = (int)maxPages; }
+
+
+            var deposits = await FindAll(tracking).Skip((depositParameters.PageNumber-1)*depositParameters.PageSize).Take(depositParameters.PageSize).ToListAsync();
+
             //return PagedList<Deposit>.ToPageList(deposits, depositParameters.PageNumber,depositParameters.PageSize);
             return new PagedList<Deposit>(deposits, count,depositParameters.PageNumber, depositParameters.PageSize);
         }
