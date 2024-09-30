@@ -12,5 +12,6 @@ namespace Contracts.ServiceContracts
         IDepositService DepositService { get; }
         IGetUserDetails getUserDetails {  get; }
         IAuthenticationService AuthenticationService { get; }
+
     }
 }

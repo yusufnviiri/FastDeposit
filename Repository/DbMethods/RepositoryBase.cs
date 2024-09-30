@@ -19,6 +19,7 @@ namespace Repository.DbMethods
 
         public IQueryable<T> FindAll(bool tracking) => !tracking ? db.Set<T>().AsNoTracking() : db.Set<T>();
         public IQueryable<T> FindByCondition(Expression<Func<T, bool>> condition, bool tracking) => !tracking ? db.Set<T>().Where(condition).AsNoTracking() : db.Set<T>().Where(condition);
+     
         public void Create(T entity) => db.Set<T>().Add(entity);
         public void Update(T entity)=> db.Set<T>().Update(entity);
         public void Delete(T entity)=> db.Set<T>().Remove(entity);

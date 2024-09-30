@@ -13,6 +13,9 @@ namespace Contracts
     {
        Task<PagedList<Deposit>> GetAllDeposits(bool tracking, DepositParameters depositParameters);
        Task<Deposit> FindDepositById( int id,bool tracking);
+
+        //Task<Decimal> GetLastDeposit(bool tracking);
+
         void CreateDeposit(Deposit deposit);
     }
 }

@@ -18,7 +18,7 @@ namespace Repository.DbMethods
         }
         public async Task<PagedList<Deposit>> GetAllDeposits(bool tracking, DepositParameters depositParameters) { 
             
-           var deposits = await FindAll(tracking).OrderBy(k => k.Amount).Skip((depositParameters.PageNumber-1)*depositParameters.PageSize).Take(depositParameters.PageSize).ToListAsync();
+           var deposits = await FindAll(tracking).Skip((depositParameters.PageNumber-1)*depositParameters.PageSize).Take(depositParameters.PageSize).ToListAsync();
 
             var count = await FindAll(tracking).CountAsync();
             //return PagedList<Deposit>.ToPageList(deposits, depositParameters.PageNumber,depositParameters.PageSize);
@@ -28,5 +28,8 @@ namespace Repository.DbMethods
         public async Task<Deposit> FindDepositById(int id, bool tracking)=> await  FindByCondition(k=>k.Id.Equals(id),tracking).SingleOrDefaultAsync();
 
         public void CreateDeposit(Deposit deposit) => Create(deposit);
+
+        //public async Task<Decimal> GetLastDepositAsync(bool tracking) => await GetLastTransaction(tracking).;
+    
     }
 }

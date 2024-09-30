@@ -28,7 +28,7 @@ namespace Presentation.Controllers
             _context = httpContext;
         }
         [HttpGet]
-        //[Authorize]
+        [Authorize]
 
 
         public async Task< IActionResult> GetDeposits([FromQuery] DepositParameters depositParameters)
@@ -48,14 +48,14 @@ namespace Presentation.Controllers
             return Ok(deposit);
         
         }
-        //[Authorize]
+        [Authorize]
         [HttpPost("create")]
         [ServiceFilter(typeof(ValidationFilterAttribute))]
         public async Task< IActionResult> CreateDeposit( [FromBody] CreateSaccoTransactionDto transaction)
         {
             var user = _service.getUserDetails.AuthenticatedUserDetails(_context);
             var depositDto =await _service.DepositService.CreateDeposit(transaction,user.Id);
-            return CreatedAtRoute("depositId", new { id = 3 }, depositDto);
+            return CreatedAtRoute("depositId", new { id = depositDto.Id }, depositDto);
         
         }
 

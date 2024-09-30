@@ -21,7 +21,7 @@ namespace Services
         private readonly IMapper _mapper;
 
 
-        public DepositService(ILoggerManager logger, IRepositoryManager repositoryManager,IMapper mapper)
+        public DepositService(ILoggerManager logger, IRepositoryManager repositoryManager, IMapper mapper)
         {
             _repo = repositoryManager;
             _logger = logger;
@@ -29,9 +29,9 @@ namespace Services
         }
 
         public async Task<(IEnumerable<ShowSaccoTransactionDto> deposits, MetaData metaData)> GetAllDeposits(bool tracking, DepositParameters depositParameters)
-        {            
-            var depositsFromDb = await _repo.DepositManager.GetAllDeposits(tracking,depositParameters);
-                var depositDto = _mapper.Map<IEnumerable<ShowSaccoTransactionDto>>(depositsFromDb);
+        {
+            var depositsFromDb = await _repo.DepositManager.GetAllDeposits(tracking, depositParameters);
+            var depositDto = _mapper.Map<IEnumerable<ShowSaccoTransactionDto>>(depositsFromDb);
 
             return (deposits: depositDto, MetaData: depositsFromDb.MetaData);
         }
@@ -43,9 +43,9 @@ namespace Services
         //    return depositDto;
 
         //}
-        public async Task< ShowSaccoTransactionDto> GetDepositById(int Id, bool tracking)
+        public async Task<ShowSaccoTransactionDto> GetDepositById(int Id, bool tracking)
         {
-            var deposit =  await _repo.DepositManager.FindDepositById(Id, tracking);
+            var deposit = await _repo.DepositManager.FindDepositById(Id, tracking);
             if (deposit == null) { throw new DepositNotFoundException(Id); }
             var depositDto = _mapper.Map<ShowSaccoTransactionDto>(deposit);
             return depositDto;
@@ -53,9 +53,11 @@ namespace Services
         }
         public async Task<ShowSaccoTransactionDto> CreateDeposit(CreateSaccoTransactionDto transaction, string Id)
         {
+            var lastDeposit = await GetLastDeposit(tracking: false, new DepositParameters());
             var deposit = new Deposit();
-            deposit.Amount= transaction.Amount;
+            deposit.Amount = transaction.Amount;
             deposit.UserId = Id;
+            deposit.SetBalance(lastDeposit.Balance,"deposit");
             //deposit.SetBalance(7000, "deposit");
             _repo.DepositManager.CreateDeposit(deposit);
 
@@ -63,5 +65,9 @@ namespace Services
             var depositDto = _mapper.Map<ShowSaccoTransactionDto>(deposit);
             return depositDto;
         }
+
+        public async Task<ShowSaccoTransactionDto> GetLastDeposit(bool tracking, DepositParameters parameters) {
+            var deposits = await GetAllDeposits(tracking, parameters);
+            return deposits.deposits.LastOrDefault();
     }
-}
+    } }
