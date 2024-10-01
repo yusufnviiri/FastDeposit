@@ -22,9 +22,9 @@ namespace Services
 
             _context = httpContext;
             var User = _context.HttpContext.User;        
-            var userId =User.FindFirst(ClaimTypes.Actor)?.Value; // The user ID from the token
-            var userEmail =User.FindFirst(ClaimTypes.Name)?.Value;        // Email claim
-            var role = User.FindFirst(ClaimTypes.Role)?.Value;             // Role claim if available
+            var userId =User.FindFirst(ClaimTypes.Actor)?.Value; 
+            var userEmail =User.FindFirst(ClaimTypes.Name)?.Value;       
+            var role = User.FindFirst(ClaimTypes.Role)?.Value;            
             var user = new User { Id = userId, Email = userEmail,FirstName=role };
 
             return user;

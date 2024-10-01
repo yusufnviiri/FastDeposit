@@ -35,7 +35,7 @@ namespace Presentation.Controllers
 
             return Ok(pagedResults.Withdraws);
         }
-        //[Authorize]
+        [Authorize]
 
         [HttpPost("create")]
         [ServiceFilter(typeof(ValidationFilterAttribute))]

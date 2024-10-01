@@ -18,6 +18,8 @@ namespace Entities.BaseModels
         public string? TransactionDate {  get; set; }= $"{DateTime.Now.Day}/{DateTime.Now.Month}/{DateTime.Now.Year} at {DateTime.Now.Hour}:{DateTime.Now.Minute}";
         [Required(ErrorMessage = "Name is a required field.")]
         [MaxLength(60, ErrorMessage = "Maximum length for the Name is 60 characters.")]
+        public ActiveAccount? ActiveAccount { get; set; }
+
 
         [ForeignKey(nameof(User))]
         [Column(TypeName = "nvarchar(450)")]

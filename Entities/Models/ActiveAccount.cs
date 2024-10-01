@@ -23,5 +23,13 @@ namespace Entities.Models
         [Column(TypeName = "nvarchar(450)")]
         public string? UserId { get; set; }
         public User? User { get; set; }
+        [ForeignKey(nameof(Deposit))]
+        public int DepositId { get; set; }
+
+        public Deposit? Deposit { get; set; }
+        [ForeignKey(nameof(Withdraw))]
+        public int WithdrawId { get; set; }
+
+        public Withdraw? Withdraw { get; set; }
     }
 }

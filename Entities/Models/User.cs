@@ -14,7 +14,7 @@ namespace Entities.Models
         public string? LastName { get; set; }
         //public string? WithdrawId { get; set; }
         //public string? ActiveAccountId { get; set; }
-        //public ActiveAccount? ActiveAccount { get; set; }
+        public ActiveAccount? ActiveAccount { get; set; }
 
         public ICollection<Deposit>? Deposits { get; set; }
         public ICollection<Withdraw>? Withdraws { get; set; }

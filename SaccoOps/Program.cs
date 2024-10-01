@@ -23,8 +23,6 @@ builder.Services.AddScoped<ValidationFilterAttribute>();
 builder.Services.ConfigureJWT(builder.Configuration);
 builder.Services.AddHttpContextAccessor();
 
-
-
 builder.Services.AddControllers()
 .AddApplicationPart(typeof(Presentation.AssemblyReference).Assembly);
 
