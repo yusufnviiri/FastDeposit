@@ -23,11 +23,7 @@ namespace Repository.DbMethods
             return new PagedList<Withdraw>(withdraws, count,parameters.PageNumber,parameters.PageSize);
 
         }
-        public void CreateWithdraw(Withdraw transaction)
-        {
-
-             Create(transaction);
-        }
+        public void CreateWithdraw(Withdraw transact)=>Create(transact);
         public async Task<Withdraw> GetLastWithdraw()
         {
             var withdraw = await FindAll(tracking: false).ToListAsync();

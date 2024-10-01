@@ -34,17 +34,24 @@ namespace Services
             return (Withdraws:result, Data: withdrawsWithMetaData.MetaData);
 
         }
-        public async Task CreateWithdrawAsync(CreateSaccoTransactionDto transactionDto)
+        public async Task<ShowSaccoTransactionDto> GetLastWithdrawTransaction()
         {
-            var lastWithdraw = await _repositoryManager.WithdrawManager.GetLastWithdraw();
-            Withdraw withdraw = new Withdraw()
-            {
-                Amount = transactionDto.Amount,
-            };
-            withdraw.SetBalance((decimal)lastWithdraw.Balance,"withdraw");
+            var withdraws = await AllWithdraws(new WithdrawParameters(), tracking: false);
+            return withdraws.Withdraws.FirstOrDefault();
+        }
+        public async Task<Withdraw> CreateWithdrawAsync(CreateSaccoTransactionDto transactionDto,string Id)
+        {
+            var lastWithdraw = await GetLastWithdrawTransaction();
+            Withdraw withdraw = new Withdraw();
+
+            withdraw.Amount = transactionDto.Amount;
+            withdraw.UserId = Id;
+            
+            withdraw.SetBalance(lastWithdraw.Balance, "deposit");
 
             _repositoryManager.WithdrawManager.CreateWithdraw(withdraw);
             await _repositoryManager.SaveAsync();
+            return withdraw;
         }
 
     }

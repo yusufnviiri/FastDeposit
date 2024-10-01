@@ -16,7 +16,7 @@ namespace Entities.Models
         //public string? WithdrawId { get; set; }
         [Column("WithdrawId")]
 
-        public int Id{ get; set; }
+        public int Id { get; set; }
 
 
 

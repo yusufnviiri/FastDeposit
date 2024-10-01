@@ -1,4 +1,5 @@
-﻿using Shared.DataTransferObjects;
+﻿using Entities.Models;
+using Shared.DataTransferObjects;
 using Shared.RequestParameters;
 using System;
 using System.Collections.Generic;
@@ -12,6 +13,6 @@ namespace Contracts.ServiceContracts
     {
         Task<(IEnumerable<ShowSaccoTransactionDto> Withdraws,MetaData Data)> AllWithdraws(WithdrawParameters withdrawParameters,bool tracking);
 
-        Task CreateWithdrawAsync(CreateSaccoTransactionDto transactionDto);
+        Task <Withdraw> CreateWithdrawAsync(CreateSaccoTransactionDto transactionDto,string id);
     }
 }

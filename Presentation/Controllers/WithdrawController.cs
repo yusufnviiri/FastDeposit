@@ -1,6 +1,9 @@
 ﻿using Contracts.ServiceContracts;
+using Entities.ErrorModel;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.EntityFrameworkCore;
 using Shared.DataTransferObjects;
 using Shared.RequestParameters;
 using System;
@@ -17,8 +20,10 @@ namespace Presentation.Controllers
   public class WithdrawController: ControllerBase
     {
         private readonly IServiceManager _service;
-        public WithdrawController(IServiceManager serviceManager) { 
+        private readonly IHttpContextAccessor _context = new HttpContextAccessor();
+        public WithdrawController(IServiceManager serviceManager,IHttpContextAccessor accessor) { 
         _service = serviceManager;
+            _context = accessor;
         }
         [HttpGet]
         public async Task<ActionResult> GetWithdraws([FromQuery] WithdrawParameters parameters)
@@ -28,9 +33,15 @@ namespace Presentation.Controllers
 
             return Ok(pagedResults.Withdraws);
         }
-        [HttpPost]
+        [HttpPost("create")]
+        [ServiceFilter(typeof(ValidationFilterAttribute))]
+
         public async Task<IActionResult> CreateWithdraw([FromBody] CreateSaccoTransactionDto createWithdraw)
         {
+            var user = _service.getUserDetails.AuthenticatedUserDetails(_context);
+
+            await _service.WithdrawService.CreateWithdrawAsync(createWithdraw,user.Id);
+            
             return Ok();
         }
     }
