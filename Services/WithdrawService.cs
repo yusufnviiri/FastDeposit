@@ -39,15 +39,14 @@ namespace Services
             var withdraws = await AllWithdraws(new WithdrawParameters(), tracking: false);
             return withdraws.Withdraws.FirstOrDefault();
         }
-        public async Task<Withdraw> CreateWithdrawAsync(CreateSaccoTransactionDto transactionDto,string Id)
+        public async Task<Withdraw> CreateWithdrawAsync(CreateSaccoTransactionDto transactionDto, string Id)
         {
             var lastWithdraw = await GetLastWithdrawTransaction();
             Withdraw withdraw = new Withdraw();
-
             withdraw.Amount = transactionDto.Amount;
-            withdraw.UserId = Id;
-            
+            withdraw.UserId = "100";
             withdraw.SetBalance(lastWithdraw.Balance, "deposit");
+            //var withraw4 = new Withdraw { Amount = 547100, Balance = 83900, UserId = "100" };
 
             _repositoryManager.WithdrawManager.CreateWithdraw(withdraw);
             await _repositoryManager.SaveAsync();

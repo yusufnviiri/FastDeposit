@@ -24,12 +24,7 @@ namespace Repository.DbMethods
 
         }
         public void CreateWithdraw(Withdraw transact)=>Create(transact);
-        public async Task<Withdraw> GetLastWithdraw()
-        {
-            var withdraw = await FindAll(tracking: false).ToListAsync();
-            return withdraw.LastOrDefault();
-
-        }
+       
 
     }
 }

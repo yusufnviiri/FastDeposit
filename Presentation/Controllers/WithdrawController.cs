@@ -1,5 +1,6 @@
 ﻿using Contracts.ServiceContracts;
 using Entities.ErrorModel;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -26,6 +27,7 @@ namespace Presentation.Controllers
             _context = accessor;
         }
         [HttpGet]
+        [Authorize]
         public async Task<ActionResult> GetWithdraws([FromQuery] WithdrawParameters parameters)
         {
             var pagedResults = await _service.WithdrawService.AllWithdraws(parameters, tracking: false);
@@ -33,6 +35,8 @@ namespace Presentation.Controllers
 
             return Ok(pagedResults.Withdraws);
         }
+        //[Authorize]
+
         [HttpPost("create")]
         [ServiceFilter(typeof(ValidationFilterAttribute))]
 

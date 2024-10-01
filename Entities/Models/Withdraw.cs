@@ -16,6 +16,7 @@ namespace Entities.Models
         //public string? WithdrawId { get; set; }
         [Column("WithdrawId")]
 
+       // [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
 
