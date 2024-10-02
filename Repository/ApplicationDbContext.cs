@@ -2,12 +2,7 @@
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Repository.Configuration;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection.Metadata;
-using System.Text;
-using System.Threading.Tasks;
+
 
 
 namespace Repository
@@ -38,6 +33,7 @@ namespace Repository
 
         public DbSet<Deposit> Deposits { get; set; }
         public DbSet<Withdraw> Withdraws { get; set; }
+        public DbSet<ActiveAccount> ActiveAccounts { get; set; }
 
     }
 }
