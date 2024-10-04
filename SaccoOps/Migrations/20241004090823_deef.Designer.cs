@@ -12,8 +12,8 @@ using Repository;
 namespace SaccoOps.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240925194026_seed")]
-    partial class seed
+    [Migration("20241004090823_deef")]
+    partial class deef
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -24,6 +24,49 @@ namespace SaccoOps.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+
+            modelBuilder.Entity("Entities.Models.ActiveAccount", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasColumnName("ActiveAccountId");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<decimal>("ActiveAmount")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal>("ActiveBalance")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<int>("DepositId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("TransactionDate")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasMaxLength(60)
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("WithdrawId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("DepositId")
+                        .IsUnique();
+
+                    b.HasIndex("UserId")
+                        .IsUnique();
+
+                    b.HasIndex("WithdrawId")
+                        .IsUnique();
+
+                    b.ToTable("ActiveAccounts");
+                });
 
             modelBuilder.Entity("Entities.Models.Deposit", b =>
                 {
@@ -44,8 +87,6 @@ namespace SaccoOps.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("UserId")
-                        .IsRequired()
-                        .HasMaxLength(60)
                         .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
@@ -60,7 +101,7 @@ namespace SaccoOps.Migrations
                             Id = 5,
                             Amount = 3393000m,
                             Balance = 93000m,
-                            TransactionDate = "25/9/2024 at 22:40",
+                            TransactionDate = "4/10/2024 - 12:8",
                             UserId = "100"
                         },
                         new
@@ -68,7 +109,7 @@ namespace SaccoOps.Migrations
                             Id = 6,
                             Amount = 9342000m,
                             Balance = 11100m,
-                            TransactionDate = "25/9/2024 at 22:40",
+                            TransactionDate = "4/10/2024 - 12:8",
                             UserId = "100"
                         },
                         new
@@ -76,7 +117,7 @@ namespace SaccoOps.Migrations
                             Id = 7,
                             Amount = 5108000m,
                             Balance = 333700m,
-                            TransactionDate = "25/9/2024 at 22:40",
+                            TransactionDate = "4/10/2024 - 12:8",
                             UserId = "100"
                         },
                         new
@@ -84,7 +125,7 @@ namespace SaccoOps.Migrations
                             Id = 8,
                             Amount = 88887100m,
                             Balance = 63800m,
-                            TransactionDate = "25/9/2024 at 22:40",
+                            TransactionDate = "4/10/2024 - 12:8",
                             UserId = "100"
                         },
                         new
@@ -92,7 +133,7 @@ namespace SaccoOps.Migrations
                             Id = 1,
                             Amount = 78523000m,
                             Balance = 3000m,
-                            TransactionDate = "25/9/2024 at 22:40",
+                            TransactionDate = "4/10/2024 - 12:8",
                             UserId = "101"
                         },
                         new
@@ -100,7 +141,7 @@ namespace SaccoOps.Migrations
                             Id = 2,
                             Amount = 465112000m,
                             Balance = 9200m,
-                            TransactionDate = "25/9/2024 at 22:40",
+                            TransactionDate = "4/10/2024 - 12:8",
                             UserId = "101"
                         },
                         new
@@ -108,7 +149,7 @@ namespace SaccoOps.Migrations
                             Id = 3,
                             Amount = 76908000m,
                             Balance = 7372900m,
-                            TransactionDate = "25/9/2024 at 22:40",
+                            TransactionDate = "4/10/2024 - 12:8",
                             UserId = "101"
                         },
                         new
@@ -116,7 +157,7 @@ namespace SaccoOps.Migrations
                             Id = 4,
                             Amount = 453547100m,
                             Balance = 83900m,
-                            TransactionDate = "25/9/2024 at 22:40",
+                            TransactionDate = "4/10/2024 - 12:8",
                             UserId = "101"
                         });
                 });
@@ -179,9 +220,6 @@ namespace SaccoOps.Migrations
                         .HasMaxLength(256)
                         .HasColumnType("nvarchar(256)");
 
-                    b.Property<string>("WithdrawId")
-                        .HasColumnType("nvarchar(max)");
-
                     b.HasKey("Id");
 
                     b.HasIndex("NormalizedEmail")
@@ -199,7 +237,7 @@ namespace SaccoOps.Migrations
                         {
                             Id = "100",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "9dd117c6-af20-4c5d-aa3f-85fca3a03786",
+                            ConcurrencyStamp = "cd27067d-466b-4226-a062-f397919d0a22",
                             Email = "admin@admin.com",
                             EmailConfirmed = true,
                             FirstName = "Romeru",
@@ -207,7 +245,7 @@ namespace SaccoOps.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@ADMIN.COM",
                             NormalizedUserName = "ADMIN@ADMIN.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAECT+v3zxXege+iYs+T+AnSfjdrpWX0Drdk3Saru9LUd5OTXWC5c8jOcvsndR7aDe1Q==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEO1PCfdiVmlxYWyyeFItzr776lRCFp4363ml5t13Dp8lswo4oMbYl1IWORuatTMdRA==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "",
                             TwoFactorEnabled = false,
@@ -217,7 +255,7 @@ namespace SaccoOps.Migrations
                         {
                             Id = "101",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "dc33ce1d-35c8-4a2f-a4a8-90db4de17fb1",
+                            ConcurrencyStamp = "16bd4fa8-0f7e-4212-a7ae-4340bc9945ad",
                             Email = "member@member.com",
                             EmailConfirmed = true,
                             FirstName = "Dimitar",
@@ -225,7 +263,7 @@ namespace SaccoOps.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "MEMBER@MEMBER.COM",
                             NormalizedUserName = "MEMBER@MEMBER.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAENtVaOBItCZvmjTfBASfV5VX6/278WjrmjPf9OmhtnyGLzkOb1AsEFeIveKaFLeXow==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEPKd4lqRfaPF1mpJxMHHykpYvODg+ZEGGw49hY7znAfgAOWqvG2aktQeBoaWmqwL6A==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "",
                             TwoFactorEnabled = false,
@@ -252,8 +290,6 @@ namespace SaccoOps.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("UserId")
-                        .IsRequired()
-                        .HasMaxLength(60)
                         .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
@@ -268,7 +304,7 @@ namespace SaccoOps.Migrations
                             Id = 1,
                             Amount = 523000m,
                             Balance = 3000m,
-                            TransactionDate = "25/9/2024 at 22:40",
+                            TransactionDate = "4/10/2024 - 12:8",
                             UserId = "101"
                         },
                         new
@@ -276,7 +312,7 @@ namespace SaccoOps.Migrations
                             Id = 2,
                             Amount = 112000m,
                             Balance = 9200m,
-                            TransactionDate = "25/9/2024 at 22:40",
+                            TransactionDate = "4/10/2024 - 12:8",
                             UserId = "101"
                         },
                         new
@@ -284,7 +320,7 @@ namespace SaccoOps.Migrations
                             Id = 3,
                             Amount = 908000m,
                             Balance = 7372900m,
-                            TransactionDate = "25/9/2024 at 22:40",
+                            TransactionDate = "4/10/2024 - 12:8",
                             UserId = "101"
                         },
                         new
@@ -292,7 +328,7 @@ namespace SaccoOps.Migrations
                             Id = 4,
                             Amount = 547100m,
                             Balance = 83900m,
-                            TransactionDate = "25/9/2024 at 22:40",
+                            TransactionDate = "4/10/2024 - 12:8",
                             UserId = "101"
                         },
                         new
@@ -300,7 +336,7 @@ namespace SaccoOps.Migrations
                             Id = 5,
                             Amount = 523000m,
                             Balance = 3000m,
-                            TransactionDate = "25/9/2024 at 22:40",
+                            TransactionDate = "4/10/2024 - 12:8",
                             UserId = "100"
                         },
                         new
@@ -308,7 +344,7 @@ namespace SaccoOps.Migrations
                             Id = 6,
                             Amount = 112000m,
                             Balance = 9200m,
-                            TransactionDate = "25/9/2024 at 22:40",
+                            TransactionDate = "4/10/2024 - 12:8",
                             UserId = "100"
                         },
                         new
@@ -316,7 +352,7 @@ namespace SaccoOps.Migrations
                             Id = 7,
                             Amount = 908000m,
                             Balance = 7372900m,
-                            TransactionDate = "25/9/2024 at 22:40",
+                            TransactionDate = "4/10/2024 - 12:8",
                             UserId = "100"
                         },
                         new
@@ -324,7 +360,7 @@ namespace SaccoOps.Migrations
                             Id = 8,
                             Amount = 547100m,
                             Balance = 83900m,
-                            TransactionDate = "25/9/2024 at 22:40",
+                            TransactionDate = "4/10/2024 - 12:8",
                             UserId = "100"
                         });
                 });
@@ -494,13 +530,38 @@ namespace SaccoOps.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
+            modelBuilder.Entity("Entities.Models.ActiveAccount", b =>
+                {
+                    b.HasOne("Entities.Models.Deposit", "Deposit")
+                        .WithOne("ActiveAccount")
+                        .HasForeignKey("Entities.Models.ActiveAccount", "DepositId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Entities.Models.User", "User")
+                        .WithOne("ActiveAccount")
+                        .HasForeignKey("Entities.Models.ActiveAccount", "UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Entities.Models.Withdraw", "Withdraw")
+                        .WithOne("ActiveAccount")
+                        .HasForeignKey("Entities.Models.ActiveAccount", "WithdrawId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Deposit");
+
+                    b.Navigation("User");
+
+                    b.Navigation("Withdraw");
+                });
+
             modelBuilder.Entity("Entities.Models.Deposit", b =>
                 {
                     b.HasOne("Entities.Models.User", "User")
                         .WithMany("Deposits")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("UserId");
 
                     b.Navigation("User");
                 });
@@ -509,9 +570,7 @@ namespace SaccoOps.Migrations
                 {
                     b.HasOne("Entities.Models.User", "User")
                         .WithMany("Withdraws")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("UserId");
 
                     b.Navigation("User");
                 });
@@ -567,11 +626,25 @@ namespace SaccoOps.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("Entities.Models.Deposit", b =>
+                {
+                    b.Navigation("ActiveAccount")
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("Entities.Models.User", b =>
                 {
+                    b.Navigation("ActiveAccount");
+
                     b.Navigation("Deposits");
 
                     b.Navigation("Withdraws");
+                });
+
+            modelBuilder.Entity("Entities.Models.Withdraw", b =>
+                {
+                    b.Navigation("ActiveAccount")
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

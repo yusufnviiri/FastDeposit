@@ -89,6 +89,7 @@ namespace Services
                 {
                     deposit.Amount = Convert.ToDecimal(item.Amount);
                     deposit.UserId=item.UserId;
+                    deposit.TransactionDate = item.DateCreated;
                     deposits.Add(deposit);
                     userInDb.PhoneNumber= $"0{item.PhoneNumber}";
                     _repo.DepositManager.CreateDeposit(deposit);

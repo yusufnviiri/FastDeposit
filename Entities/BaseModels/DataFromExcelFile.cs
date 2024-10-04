@@ -12,5 +12,6 @@ namespace Entities.BaseModels
         public string? UserId { get; set; }
         public string? Amount { get; set; }
         public string? PhoneNumber { get; set; }
+        public string? DateCreated { get; set; }    
     }
 }

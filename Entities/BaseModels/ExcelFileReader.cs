@@ -20,7 +20,7 @@ namespace Entities.BaseModels
         public  List<DataFromExcelFile> GetDataFromExel()
         {
             ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
-
+            var lastModified = Package.Workbook.Properties.Modified;
             Worksheet = Package.Workbook.Worksheets.FirstOrDefault();
             if (Worksheet == null) return new List<DataFromExcelFile>();
             for (int i = 2; i < 13; i++)
@@ -30,6 +30,7 @@ namespace Entities.BaseModels
                 data.UserId = Worksheet.Cells[i, 2].Value.ToString();
                 data.Amount = Worksheet.Cells[i, 3].Value.ToString();
                 data.PhoneNumber = Worksheet.Cells[i, 4].Value.ToString();
+                data.DateCreated = lastModified.ToString();
                 ExcelData.Add(data);
             }
             return ExcelData;
