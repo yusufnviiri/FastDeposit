@@ -16,5 +16,6 @@ namespace Contracts
 
         //Task<Decimal> GetLastDeposit(bool tracking);
         void CreateDeposit(Deposit deposit);
+       Task<bool> FindIfTransactionExists(string date, string userId, bool tracking);
     }
 }

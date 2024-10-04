@@ -81,20 +81,25 @@ namespace Services
             List<Deposit> deposits = new List<Deposit>();
             foreach (var item in ExcelData)
             {
-                Deposit deposit = new Deposit();
 
+                var lastTransaction = await _repo.DepositManager.FindIfTransactionExists(item.DateCreated, item.UserId, tracking: false);
 
-                var userInDb =await _userManager.FindByIdAsync(item.UserId);
-                if (userInDb != null)
+                if (lastTransaction)
                 {
-                    deposit.Amount = Convert.ToDecimal(item.Amount);
-                    deposit.UserId=item.UserId;
-                    deposit.TransactionDate = item.DateCreated;
-                    deposits.Add(deposit);
-                    userInDb.PhoneNumber= $"0{item.PhoneNumber}";
-                    _repo.DepositManager.CreateDeposit(deposit);
+                    Deposit deposit = new Deposit();
 
-                    await _repo.SaveAsync();
+
+                    var userInDb = await _userManager.FindByIdAsync(item.UserId);
+                    if (userInDb != null)
+                    {
+                        deposit.Amount = Convert.ToDecimal(item.Amount);
+                        deposit.UserId = item.UserId;
+                        deposit.TransactionDate = item.DateCreated;
+                        deposits.Add(deposit);
+                        userInDb.PhoneNumber = $"0{item.PhoneNumber}";
+                        _repo.DepositManager.CreateDeposit(deposit);
+                        await _repo.SaveAsync();
+                    }
                 }
 
 

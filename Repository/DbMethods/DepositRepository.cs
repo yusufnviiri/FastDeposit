@@ -34,6 +34,12 @@ namespace Repository.DbMethods
 
         public void CreateDeposit(Deposit deposit) => Create(deposit);
 
+        public async Task<bool> FindIfTransactionExists(string date,string UserId,bool tracking)
+        {
+            var transaction = await FindByCondition((k=>k.TransactionDate.Equals(date)&& k.UserId.Equals(UserId)),tracking).FirstOrDefaultAsync();
+            return transaction != null? true:false;
+        }
+
 
 
         //public async Task<Decimal> GetLastDepositAsync(bool tracking) => await GetLastTransaction(tracking).;
