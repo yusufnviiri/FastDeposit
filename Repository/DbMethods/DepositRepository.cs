@@ -1,4 +1,5 @@
 ﻿using Contracts;
+using Entities.BaseModels;
 using Entities.Models;
 using Microsoft.EntityFrameworkCore;
 using Shared.RequestParameters;
@@ -20,7 +21,8 @@ namespace Repository.DbMethods
             var count = await FindAll(tracking).CountAsync();
             var maxPages = Math.Ceiling((double)(count / (double)depositParameters.PageSize));
             //if (depositParameters.PageNumber == 1) { depositParameters.PageNumber = (int)maxPages; }
-
+           
+            
 
             var deposits = await FindAll(tracking).OrderByDescending(k=>k.Id).Skip((depositParameters.PageNumber-1)*depositParameters.PageSize).Take(depositParameters.PageSize).ToListAsync();
 
@@ -32,7 +34,9 @@ namespace Repository.DbMethods
 
         public void CreateDeposit(Deposit deposit) => Create(deposit);
 
+
+
         //public async Task<Decimal> GetLastDepositAsync(bool tracking) => await GetLastTransaction(tracking).;
-    
+
     }
 }

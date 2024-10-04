@@ -15,7 +15,6 @@ namespace Contracts
        Task<Deposit> FindDepositById( int id,bool tracking);
 
         //Task<Decimal> GetLastDeposit(bool tracking);
-
         void CreateDeposit(Deposit deposit);
     }
 }

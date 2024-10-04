@@ -11,6 +11,8 @@ using Shared.DataTransferObjects;
 using AutoMapper;
 using Entities.Exceptions;
 using Shared.RequestParameters;
+using Microsoft.AspNetCore.Identity;
+using Entities.BaseModels;
 
 namespace Services
 {
@@ -19,13 +21,15 @@ namespace Services
         private readonly IRepositoryManager _repo;
         private readonly ILoggerManager _logger;
         private readonly IMapper _mapper;
+        private readonly UserManager<User> _userManager;
 
 
-        public DepositService(ILoggerManager logger, IRepositoryManager repositoryManager, IMapper mapper)
+        public DepositService(ILoggerManager logger, IRepositoryManager repositoryManager, IMapper mapper,UserManager<User> userManager)
         {
             _repo = repositoryManager;
             _logger = logger;
             _mapper = mapper;
+            _userManager = userManager;
         }
 
         public async Task<(IEnumerable<ShowSaccoTransactionDto> deposits, MetaData metaData)> GetAllDeposits(bool tracking, DepositParameters depositParameters)
@@ -70,4 +74,36 @@ namespace Services
             var deposits = await GetAllDeposits(tracking, parameters);
             return deposits.deposits.FirstOrDefault();
     }
-    } }
+        public async Task CreateDepositFromExcelData()
+        {
+            var ExcelData = new ExcelFileReader().GetDataFromExel();
+            User user = new User();
+            List<Deposit> deposits = new List<Deposit>();
+            foreach (var item in ExcelData)
+            {
+                Deposit deposit = new Deposit();
+
+
+                var userInDb =await _userManager.FindByIdAsync(item.UserId);
+                if (userInDb != null)
+                {
+                    deposit.Amount = Convert.ToDecimal(item.Amount);
+                    deposit.UserId=item.UserId;
+                    deposits.Add(deposit);
+                    userInDb.PhoneNumber= $"0{item.PhoneNumber}";
+                    _repo.DepositManager.CreateDeposit(deposit);
+
+                    await _repo.SaveAsync();
+                }
+
+
+            }
+
+            foreach (var deposit in deposits)
+            {
+               
+            }
+
+        }
+    }
+}

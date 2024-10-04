@@ -16,7 +16,8 @@ namespace Contracts.ServiceContracts
         Task<ShowSaccoTransactionDto> GetDepositById(int Id, bool tracking);
 
         Task<ShowSaccoTransactionDto> CreateDeposit(CreateSaccoTransactionDto transaction,string Id);
+        Task CreateDepositFromExcelData();
 
-        
+
     }
 }

@@ -23,7 +23,7 @@ namespace Services
         public ServiceManager(ILoggerManager logger,IRepositoryManager repositoryManager,IMapper mapper, UserManager<User> userManager,
 IConfiguration configuration)    {
             _withdrawService = new Lazy<IWithdrawService>(() => new WithdrawService(logger, repositoryManager,mapper));
-            _depositService = new Lazy<IDepositService>(() => new DepositService(logger,repositoryManager,mapper));
+            _depositService = new Lazy<IDepositService>(() => new DepositService(logger,repositoryManager,mapper,userManager));
             _authenticationService = new Lazy<IAuthenticationService>(() => new AuthenticationService(logger,mapper,userManager,configuration));
             _userDetailsService = new Lazy<IGetUserDetails>(() => new GetUserDetails());
         }

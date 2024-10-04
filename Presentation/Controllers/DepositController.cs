@@ -33,6 +33,7 @@ namespace Presentation.Controllers
 
         public async Task< IActionResult> GetDeposits([FromQuery] DepositParameters depositParameters)
         {
+           
             var username = User.Identity.Name;
             var pagedResults = await _service.DepositService.GetAllDeposits(tracking: false,depositParameters);
             Console.WriteLine(username);
@@ -58,6 +59,13 @@ namespace Presentation.Controllers
             return CreatedAtRoute("depositId", new { id = depositDto.Id }, depositDto);
         
         }
+        [Authorize]
 
+        [HttpGet("fetchExceldata")]
+public async Task<IActionResult> CreateDepositFromExcelData()
+        {
+            await _service.DepositService.CreateDepositFromExcelData();
+            return Ok();
         }
+    }
 }
