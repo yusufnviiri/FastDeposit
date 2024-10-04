@@ -37,7 +37,7 @@ namespace Repository.DbMethods
         public async Task<bool> FindIfTransactionExists(string date,string UserId,bool tracking)
         {
             var transaction = await FindByCondition((k=>k.TransactionDate.Equals(date)&& k.UserId.Equals(UserId)),tracking).FirstOrDefaultAsync();
-            return transaction != null? true:false;
+            return transaction == null? true:false;
         }
 
 
