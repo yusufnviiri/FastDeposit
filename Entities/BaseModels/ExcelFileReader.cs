@@ -13,7 +13,10 @@ namespace Entities.BaseModels
 
         public static List<DataFromExcelFile> ExcelData { get; set; } = new List<DataFromExcelFile>();
 
-        public static FileInfo File { get; set; } = new FileInfo(@"C:\Users\DIXIE\Desktop\Accountslog.xlsx");
+        //public static FileInfo File { get; set; } = new FileInfo(@"C:\Users\DIXIE\Desktop\Accountslog.xlsx");
+
+        public static FileInfo File { get; set; } = new FileInfo(@"C:\Users\DIXIE\source\repos\FastDeposit\SaccoOps\Uploads\Accountsdata.xlsx");
+
         public static ExcelPackage Package { get; set; } = new ExcelPackage(File);
         public static ExcelWorksheet Worksheet { get; set; }
 

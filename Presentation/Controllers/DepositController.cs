@@ -12,6 +12,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Text.Json;
 using Microsoft.AspNetCore.Http;
+using NLog.Targets;
 
 namespace Presentation.Controllers
 {
@@ -66,6 +67,24 @@ public async Task<IActionResult> CreateDepositFromExcelData()
         {
             await _service.DepositService.CreateDepositFromExcelData();
             return Ok();
+        }
+
+        [HttpPost("uploadFile")]
+        public async Task<IActionResult> UploadExcelFile(IFormFile file)
+        {
+           if(file is  null|| file.Length < 1)
+            {
+                return BadRequest("No file Uploaded");
+            }
+
+           var path = Path.Combine(Directory.GetCurrentDirectory(),"Uploads",file.FileName);
+            Directory.CreateDirectory(Path.GetDirectoryName(path));
+            using (var stream = new FileStream(path, FileMode.Create))
+            {
+                await file.CopyToAsync(stream);
+            }
+            return Ok( new {FilePath=path});
+
         }
     }
 }
