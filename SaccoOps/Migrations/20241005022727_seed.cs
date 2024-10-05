@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace SaccoOps.Migrations
 {
     /// <inheritdoc />
-    public partial class deef : Migration
+    public partial class seed : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -169,6 +169,7 @@ namespace SaccoOps.Migrations
                     Amount = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
                     Balance = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
                     TransactionDate = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Reason = table.Column<string>(type: "nvarchar(60)", maxLength: 60, nullable: false),
                     UserId = table.Column<string>(type: "nvarchar(450)", nullable: true)
                 },
                 constraints: table =>
@@ -190,6 +191,7 @@ namespace SaccoOps.Migrations
                     Amount = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
                     Balance = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
                     TransactionDate = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Reason = table.Column<string>(type: "nvarchar(60)", maxLength: 60, nullable: false),
                     UserId = table.Column<string>(type: "nvarchar(450)", nullable: true)
                 },
                 constraints: table =>
@@ -253,8 +255,8 @@ namespace SaccoOps.Migrations
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "FirstName", "LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
                 values: new object[,]
                 {
-                    { "100", 0, "cd27067d-466b-4226-a062-f397919d0a22", "admin@admin.com", true, "Romeru", "Lukaku", false, null, "ADMIN@ADMIN.COM", "ADMIN@ADMIN.COM", "AQAAAAIAAYagAAAAEO1PCfdiVmlxYWyyeFItzr776lRCFp4363ml5t13Dp8lswo4oMbYl1IWORuatTMdRA==", null, false, "", false, "admin@admin.com" },
-                    { "101", 0, "16bd4fa8-0f7e-4212-a7ae-4340bc9945ad", "member@member.com", true, "Dimitar", "Berbatov", false, null, "MEMBER@MEMBER.COM", "MEMBER@MEMBER.COM", "AQAAAAIAAYagAAAAEPKd4lqRfaPF1mpJxMHHykpYvODg+ZEGGw49hY7znAfgAOWqvG2aktQeBoaWmqwL6A==", null, false, "", false, "member@member.com" }
+                    { "100", 0, "4bec75b8-49bb-4d4a-bab9-b8ccd2a3558a", "admin@admin.com", true, "Romeru", "Lukaku", false, null, "ADMIN@ADMIN.COM", "ADMIN@ADMIN.COM", "AQAAAAIAAYagAAAAEDEkDr8nY+VMBMhfY9N1YD9Gx30mTkU10dXdCyMxQXOODrnxpveYfWYmOiLVgRgpGw==", null, false, "", false, "admin@admin.com" },
+                    { "101", 0, "d891eb73-be06-4753-a2f9-f307061934d6", "member@member.com", true, "Dimitar", "Berbatov", false, null, "MEMBER@MEMBER.COM", "MEMBER@MEMBER.COM", "AQAAAAIAAYagAAAAEJMV458zSBqPVJw+8y5MZ4r61h8iFBufk7Retg93y1/LJa2imlB7sWPpleZiOH3uFQ==", null, false, "", false, "member@member.com" }
                 });
 
             migrationBuilder.InsertData(
@@ -268,32 +270,32 @@ namespace SaccoOps.Migrations
 
             migrationBuilder.InsertData(
                 table: "Deposits",
-                columns: new[] { "DepositId", "Amount", "Balance", "TransactionDate", "UserId" },
+                columns: new[] { "DepositId", "Amount", "Balance", "Reason", "TransactionDate", "UserId" },
                 values: new object[,]
                 {
-                    { 1, 78523000m, 3000m, "4/10/2024 - 12:8", "101" },
-                    { 2, 465112000m, 9200m, "4/10/2024 - 12:8", "101" },
-                    { 3, 76908000m, 7372900m, "4/10/2024 - 12:8", "101" },
-                    { 4, 453547100m, 83900m, "4/10/2024 - 12:8", "101" },
-                    { 5, 3393000m, 93000m, "4/10/2024 - 12:8", "100" },
-                    { 6, 9342000m, 11100m, "4/10/2024 - 12:8", "100" },
-                    { 7, 5108000m, 333700m, "4/10/2024 - 12:8", "100" },
-                    { 8, 88887100m, 63800m, "4/10/2024 - 12:8", "100" }
+                    { 1, 78523000m, 3000m, "User Transaction", "5/10/2024 - 5:27", "101" },
+                    { 2, 465112000m, 9200m, "User Transaction", "5/10/2024 - 5:27", "101" },
+                    { 3, 76908000m, 7372900m, "User Transaction", "5/10/2024 - 5:27", "101" },
+                    { 4, 453547100m, 83900m, "User Transaction", "5/10/2024 - 5:27", "101" },
+                    { 5, 3393000m, 93000m, "User Transaction", "5/10/2024 - 5:27", "100" },
+                    { 6, 9342000m, 11100m, "User Transaction", "5/10/2024 - 5:27", "100" },
+                    { 7, 5108000m, 333700m, "User Transaction", "5/10/2024 - 5:27", "100" },
+                    { 8, 88887100m, 63800m, "User Transaction", "5/10/2024 - 5:27", "100" }
                 });
 
             migrationBuilder.InsertData(
                 table: "Withdraws",
-                columns: new[] { "WithdrawId", "Amount", "Balance", "TransactionDate", "UserId" },
+                columns: new[] { "WithdrawId", "Amount", "Balance", "Reason", "TransactionDate", "UserId" },
                 values: new object[,]
                 {
-                    { 1, 523000m, 3000m, "4/10/2024 - 12:8", "101" },
-                    { 2, 112000m, 9200m, "4/10/2024 - 12:8", "101" },
-                    { 3, 908000m, 7372900m, "4/10/2024 - 12:8", "101" },
-                    { 4, 547100m, 83900m, "4/10/2024 - 12:8", "101" },
-                    { 5, 523000m, 3000m, "4/10/2024 - 12:8", "100" },
-                    { 6, 112000m, 9200m, "4/10/2024 - 12:8", "100" },
-                    { 7, 908000m, 7372900m, "4/10/2024 - 12:8", "100" },
-                    { 8, 547100m, 83900m, "4/10/2024 - 12:8", "100" }
+                    { 1, 523000m, 3000m, "User Transaction", "5/10/2024 - 5:27", "101" },
+                    { 2, 112000m, 9200m, "User Transaction", "5/10/2024 - 5:27", "101" },
+                    { 3, 908000m, 7372900m, "User Transaction", "5/10/2024 - 5:27", "101" },
+                    { 4, 547100m, 83900m, "User Transaction", "5/10/2024 - 5:27", "101" },
+                    { 5, 523000m, 3000m, "User Transaction", "5/10/2024 - 5:27", "100" },
+                    { 6, 112000m, 9200m, "User Transaction", "5/10/2024 - 5:27", "100" },
+                    { 7, 908000m, 7372900m, "User Transaction", "5/10/2024 - 5:27", "100" },
+                    { 8, 547100m, 83900m, "User Transaction", "5/10/2024 - 5:27", "100" }
                 });
 
             migrationBuilder.CreateIndex(

@@ -77,10 +77,12 @@ namespace Services
         public async Task CreateDepositFromExcelData()
         {
             var ExcelData = new ExcelFileReader().GetDataFromExel();
+
             User user = new User();
             List<Deposit> deposits = new List<Deposit>();
             foreach (var item in ExcelData)
             {
+                var lastDeposit = await GetLastDeposit(tracking: false, new DepositParameters());
 
                 var lastTransaction = await _repo.DepositManager.FindIfTransactionExists(item.DateCreated, item.UserId, tracking: false);
 
@@ -92,10 +94,12 @@ namespace Services
                     var userInDb = await _userManager.FindByIdAsync(item.UserId);
                     if (userInDb != null)
                     {
+
                         deposit.Amount = Convert.ToDecimal(item.Amount);
                         deposit.UserId = item.UserId;
                         deposit.TransactionDate = item.DateCreated;
                         deposit.Reason = "Account Update";
+                        deposit.SetBalance(lastDeposit.Balance, "deposit");
                         deposits.Add(deposit);
                         userInDb.PhoneNumber = $"0{item.PhoneNumber}";
                         _repo.DepositManager.CreateDeposit(deposit);
