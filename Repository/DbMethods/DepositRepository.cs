@@ -21,13 +21,18 @@ namespace Repository.DbMethods
             var count = await FindAll(tracking).CountAsync();
             var maxPages = Math.Ceiling((double)(count / (double)depositParameters.PageSize));
             //if (depositParameters.PageNumber == 1) { depositParameters.PageNumber = (int)maxPages; }
-           
-            
-
-            var deposits = await FindAll(tracking).OrderByDescending(k=>k.Id).Skip((depositParameters.PageNumber-1)*depositParameters.PageSize).Take(depositParameters.PageSize).ToListAsync();
-
+                     var deposits = await FindAll(tracking).OrderByDescending(k=>k.Id).Skip((depositParameters.PageNumber-1)*depositParameters.PageSize).Take(depositParameters.PageSize).ToListAsync();
             //return PagedList<Deposit>.ToPageList(deposits, depositParameters.PageNumber,depositParameters.PageSize);
             return new PagedList<Deposit>(deposits, count,depositParameters.PageNumber, depositParameters.PageSize);
+        }
+        public async Task<PagedList<Deposit>> GetUserDeposits(bool tracking, DepositParameters depositParameters,string Id)
+        {
+            var count = await FindAll(tracking).CountAsync();
+            var maxPages = Math.Ceiling((double)(count / (double)depositParameters.PageSize));
+            //if (depositParameters.PageNumber == 1) { depositParameters.PageNumber = (int)maxPages; }
+            var deposits = await FindByCondition((k=>k.UserId.Equals(Id)),tracking).OrderByDescending(k => k.Id).Skip((depositParameters.PageNumber - 1) * depositParameters.PageSize).Take(depositParameters.PageSize).ToListAsync();
+            //return PagedList<Deposit>.ToPageList(deposits, depositParameters.PageNumber,depositParameters.PageSize);
+            return new PagedList<Deposit>(deposits, count, depositParameters.PageNumber, depositParameters.PageSize);
         }
 
         public async Task<Deposit> FindDepositById(int id, bool tracking)=> await  FindByCondition(k=>k.Id.Equals(id),tracking).SingleOrDefaultAsync();

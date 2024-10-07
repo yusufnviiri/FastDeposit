@@ -39,6 +39,13 @@ namespace Services
 
             return (deposits: depositDto, MetaData: depositsFromDb.MetaData);
         }
+        public async Task<(IEnumerable<ShowSaccoTransactionDto> deposits, MetaData metaData)> GetAllUserDeposits(bool tracking, DepositParameters depositParameters,string Id)
+        {
+            var depositsFromDb = await _repo.DepositManager.GetUserDeposits(tracking, depositParameters, Id);
+            var depositDto = _mapper.Map<IEnumerable<ShowSaccoTransactionDto>>(depositsFromDb).OrderByDescending(k => k.Id);
+
+            return (deposits: depositDto, MetaData: depositsFromDb.MetaData);
+        }
 
         //public async Task<ShowSaccoTransactionDto> GetDepositById(int Id, bool tracking) { 
         //var deposit = await _repo.DepositManager.FindDepositById(Id, tracking);

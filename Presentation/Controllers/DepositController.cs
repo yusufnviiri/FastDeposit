@@ -38,7 +38,16 @@ namespace Presentation.Controllers
             Response.Headers.Add("X-Pagination",JsonSerializer.Serialize(pagedResults.metaData));
             return Ok(pagedResults.deposits);
             }
-        
+        [HttpGet("userDeposits")]
+        [Authorize]
+        public async Task<IActionResult> GetUserDeposits([FromQuery] DepositParameters depositParameters)
+        {
+            var user = _service.getUserDetails.AuthenticatedUserDetails(_context);
+
+            var pagedResults = await _service.DepositService.GetAllUserDeposits(tracking: false, depositParameters,user.Id);
+            Response.Headers.Add("X-Pagination", JsonSerializer.Serialize(pagedResults.metaData));
+            return Ok(pagedResults.deposits);
+        }
         [HttpGet("{id:int}",Name ="depositId")]
 
         public  async Task< IActionResult> GetDeposits( [FromQuery] DepositParameters depositParameters,int id)

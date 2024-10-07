@@ -12,7 +12,8 @@ namespace Contracts
     public interface IDepositRepository
     {
        Task<PagedList<Deposit>> GetAllDeposits(bool tracking, DepositParameters depositParameters);
-       Task<Deposit> FindDepositById( int id,bool tracking);
+        Task<PagedList<Deposit>> GetUserDeposits(bool tracking, DepositParameters depositParameters,string UserId);
+        Task<Deposit> FindDepositById( int id,bool tracking);
 
         //Task<Decimal> GetLastDeposit(bool tracking);
         void CreateDeposit(Deposit deposit);
