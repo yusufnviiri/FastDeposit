@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Entities.BaseModels;
+using Microsoft.AspNetCore.Identity;
 using Shared.DataTransferObjects;
 using System;
 using System.Collections.Generic;
@@ -10,8 +11,10 @@ namespace Contracts.ServiceContracts
 {
    public interface IAuthenticationService
     {
-        Task<IdentityResult>RegisterUser(UserRegistrationDto userRegistrationDto);
-        Task<bool>LoginUser(UserLoginDto userLoginDto);
+        //Task<IdentityResult>RegisterUser(UserRegistrationDto userRegistrationDto);
+        Task<IdentityResult> RegisterUser(UserRegistrationDto userRegistrationDto);
+
+        Task<LoggedInUser> LoginUser(UserLoginDto userLoginDto);
         Task<string> CreateToken();
 
     }

@@ -25,16 +25,20 @@ namespace Presentation.Controllers
         public async Task<IActionResult> RegisterUser([FromBody] UserRegistrationDto user)
         {
             if (user == null || !ModelState.IsValid)
+            {
                 return BadRequest();
-            var res = await _service.AuthenticationService.RegisterUser(user);
+            }
+            else
+            {
+                var res = await _service.AuthenticationService.RegisterUser(user);
 
-            var username = User.Identity.Name;
-            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier); // The user's ID
-            var userEmail = User.FindFirstValue(ClaimTypes.Email);        // The user's email
-            var userName = User.FindFirstValue(ClaimTypes.Name);          // The user's username
+                //var username = User.Identity.Name;
+                //var userId = User.FindFirstValue(ClaimTypes.NameIdentifier); // The user's ID
+                //var userEmail = User.FindFirstValue(ClaimTypes.Email);        // The user's email
+                //var userName = User.FindFirstValue(ClaimTypes.Name);          // The user's username
 
-
-            return Ok(res);
+                return Ok(res);
+            }
 
 
         }
@@ -47,11 +51,16 @@ namespace Presentation.Controllers
             //return Ok(res);
 
             var auth = await _service.AuthenticationService.LoginUser(user);
-            if (!auth) { 
-            return Unauthorized(); }
+            if (!auth.IsAuthenticated) { 
+            return Unauthorized("Wrong Password or Email"); }
         else{
+                var username = User.Identity.Name;
+                var userId = User.FindFirstValue(ClaimTypes.NameIdentifier); // The user's ID
+                var userEmail = User.FindFirstValue(ClaimTypes.Email);        // The user's email
+                var userName = User.FindFirstValue(ClaimTypes.Name);
+
                 return Ok(new
-                {
+                { UserName = $"{auth.User.FirstName} {auth.User.LastName}",
                     Token = await _service.AuthenticationService.CreateToken()
                 });
             };

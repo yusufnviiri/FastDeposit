@@ -30,11 +30,8 @@ namespace Presentation.Controllers
         }
         [HttpGet]
         [Authorize]
-
-
         public async Task< IActionResult> GetDeposits([FromQuery] DepositParameters depositParameters)
-        {
-           
+        {          
             var username = User.Identity.Name;
             var pagedResults = await _service.DepositService.GetAllDeposits(tracking: false,depositParameters);
             Console.WriteLine(username);
@@ -57,8 +54,14 @@ namespace Presentation.Controllers
         {
             var user = _service.getUserDetails.AuthenticatedUserDetails(_context);
             var depositDto =await _service.DepositService.CreateDeposit(transaction,user.Id);
-            return CreatedAtRoute("depositId", new { id = depositDto.Id }, depositDto);
-        
+            //return CreatedAtRoute("depositId", new { id = depositDto.Id }, depositDto);
+            if (depositDto is null)
+            {
+                return BadRequest("Data invalid");
+            }
+            return Ok();
+
+
         }
         [Authorize]
 

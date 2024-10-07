@@ -17,6 +17,7 @@ using Microsoft.AspNetCore.Mvc;
 using System.IdentityModel.Tokens.Jwt;
 using Microsoft.AspNetCore.Http.HttpResults;
 using System.Xml.Linq;
+using Entities.BaseModels;
 
 namespace Services
 {
@@ -45,10 +46,13 @@ namespace Services
             if (result.Succeeded)
             {
                 await _userManager.AddToRolesAsync(user, userRegistrationDto.Roles);
+
             }
             return result;
+
+
         }
-             public async Task<bool> LoginUser(UserLoginDto userForAuth)
+        public async Task<LoggedInUser> LoginUser(UserLoginDto userForAuth)
         {
             _user = await _userManager.FindByNameAsync(userForAuth.Email);
             
@@ -56,7 +60,7 @@ namespace Services
            userForAuth.Password));
             if (!result)
                 _logger.LogWarn($"{nameof(LoginUser)}: Authentication failed. Wrong user                name or password.");
- return result;
+ return new LoggedInUser { IsAuthenticated = result, User = _user };
         }
 
 
@@ -76,7 +80,7 @@ namespace Services
         private async Task<List<Claim>> GetClaims()
         {
             var idClaim = new Claim(ClaimTypes.Actor,_user.Id);
-            var claims = new List<Claim> {new Claim(ClaimTypes.Name, _user.UserName) };
+            var claims = new List<Claim> {new Claim(ClaimTypes.Email, _user.UserName) };
 
             var roles = await _userManager.GetRolesAsync(_user);
             var role = roles.FirstOrDefault();
@@ -85,6 +89,7 @@ namespace Services
                 claims.Add(new Claim(ClaimTypes.Role, role));
             }
             claims.Add( new Claim(ClaimTypes.Actor, _user.Id));
+            claims.Add(new Claim(ClaimTypes.Name, $"{_user.FirstName} {_user.LastName}"));
             //foreach (var role in roles)
             //{
             //    claims.Add(new Claim(ClaimTypes.Role, role));
