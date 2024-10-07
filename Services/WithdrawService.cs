@@ -52,7 +52,7 @@ namespace Services
             var lastWithdraw = await GetLastWithdrawTransaction();
             Withdraw withdraw = new Withdraw();
             withdraw.Amount = transactionDto.Amount;
-            withdraw.UserId = "100";
+            withdraw.UserId = Id;
             withdraw.SetBalance(lastWithdraw.Balance, "deposit");
             //var withraw4 = new Withdraw { Amount = 547100, Balance = 83900, UserId = "100" };
 
