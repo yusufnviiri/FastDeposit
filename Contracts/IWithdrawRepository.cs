@@ -12,6 +12,8 @@ namespace Contracts
    public interface IWithdrawRepository
     {
         Task<PagedList<Withdraw>> GetAllWithdraws(bool tracking,WithdrawParameters withdrawParameters);
+        Task<PagedList<Withdraw>> GetUserWithdraws(bool tracking, WithdrawParameters withdrawParameters, string UserId);
+
         void CreateWithdraw(Withdraw withdraw);
     }
 }

@@ -23,8 +23,17 @@ namespace Repository.DbMethods
             return new PagedList<Withdraw>(withdraws, count,parameters.PageNumber,parameters.PageSize);
 
         }
+      
         public void CreateWithdraw(Withdraw transact)=>Create(transact);
-       
+        public async Task<PagedList<Withdraw>> GetUserWithdraws(bool tracking, WithdrawParameters withdrawParameters, string UserId)
+        {
+            var count = await FindAll(tracking).CountAsync();
+        var maxPages = Math.Ceiling((double)(count / (double)withdrawParameters.PageSize));
+        //if (depositParameters.PageNumber == 1) { depositParameters.PageNumber = (int)maxPages; }
+        var withdraws = await FindByCondition((k => k.UserId.Equals(UserId)), tracking).OrderByDescending(k => k.Id).Skip((withdrawParameters.PageNumber - 1) * withdrawParameters.PageSize).Take(withdrawParameters.PageSize).ToListAsync();
+            //return PagedList<Deposit>.ToPageList(deposits, depositParameters.PageNumber,depositParameters.PageSize);
+            return new PagedList<Withdraw>(withdraws, count, withdrawParameters.PageNumber, withdrawParameters.PageSize);
+        }
 
-    }
+}
 }

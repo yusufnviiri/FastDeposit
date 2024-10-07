@@ -35,6 +35,16 @@ namespace Presentation.Controllers
 
             return Ok(pagedResults.Withdraws);
         }
+        [HttpGet("userWithdraws")]
+        [Authorize]
+        public async Task<IActionResult> GetUserDeposits([FromQuery] WithdrawParameters withdrawParameters)
+        {
+            var user = _service.getUserDetails.AuthenticatedUserDetails(_context);
+
+            var pagedResults = await _service.WithdrawService.GetAllUserWithdraws(tracking: false, withdrawParameters, user.Id);
+            Response.Headers.Add("X-Pagination", JsonSerializer.Serialize(pagedResults.metaData));
+            return Ok(pagedResults.withdraws);
+        }
         [Authorize]
 
         [HttpPost("create")]

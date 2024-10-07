@@ -34,6 +34,14 @@ namespace Services
             return (Withdraws:result, Data: withdrawsWithMetaData.MetaData);
 
         }
+
+        public async Task<(IEnumerable<ShowSaccoTransactionDto> withdraws, MetaData metaData)> GetAllUserWithdraws(bool tracking, WithdrawParameters withdrawParameters, string Id)
+        {
+            var withdrawsFromDb = await _repositoryManager.WithdrawManager.GetUserWithdraws(tracking, withdrawParameters, Id);
+            var withdrawDto = _mapper.Map<IEnumerable<ShowSaccoTransactionDto>>(withdrawsFromDb).OrderByDescending(k => k.Id);
+
+            return (withdraws: withdrawDto, MetaData: withdrawsFromDb.MetaData);
+        }
         public async Task<ShowSaccoTransactionDto> GetLastWithdrawTransaction()
         {
             var withdraws = await AllWithdraws(new WithdrawParameters(), tracking: false);
