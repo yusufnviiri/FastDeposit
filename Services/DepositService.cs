@@ -92,7 +92,7 @@ namespace Services
 
                 var lastTransaction = await _repo.DepositManager.FindIfTransactionExists(item.DateCreated, item.UserId, tracking: false);
 
-                if (lastTransaction)
+                if (!lastTransaction )
                 {
                     Deposit deposit = new Deposit();
 
@@ -100,7 +100,6 @@ namespace Services
                     var userInDb = await _userManager.FindByIdAsync(item.UserId);
                     if (userInDb != null)
                     {
-
                         deposit.Amount = Convert.ToDecimal(item.Amount);
                         deposit.UserId = item.UserId;
                         deposit.TransactionDate = item.DateCreated;
