@@ -53,7 +53,7 @@ namespace Services
             Withdraw withdraw = new Withdraw();
             withdraw.Amount = transactionDto.Amount;
             withdraw.UserId = Id;
-            withdraw.SetBalance(lastWithdraw.Balance, "deposit");
+            withdraw.SetBalance(lastWithdraw.Balance, "withdraw");
             //var withraw4 = new Withdraw { Amount = 547100, Balance = 83900, UserId = "100" };
 
             _repositoryManager.WithdrawManager.CreateWithdraw(withdraw);

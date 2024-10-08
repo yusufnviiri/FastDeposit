@@ -84,7 +84,6 @@ namespace Services
         public async Task CreateDepositFromExcelData()
         {
             var ExcelData = new ExcelFileReader().GetDataFromExel();
-
             User user = new User();
             List<Deposit> deposits = new List<Deposit>();
             foreach (var item in ExcelData)

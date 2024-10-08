@@ -74,7 +74,7 @@ namespace Presentation.Controllers
         }
         [Authorize]
 
-        [HttpPost("fetchExceldata")]
+        [HttpGet("fetchExceldata")]
 public async Task<IActionResult> CreateDepositFromExcelData()
         {
             await _service.DepositService.CreateDepositFromExcelData();
