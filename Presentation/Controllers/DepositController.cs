@@ -80,8 +80,10 @@ public async Task<IActionResult> CreateDepositFromExcelData()
             await _service.DepositService.CreateDepositFromExcelData();
             return Ok();
         }
+  
+    [Authorize]
 
-        [HttpPost("uploadFile")]
+    [HttpPost("uploadFile")]
         public async Task<IActionResult> UploadExcelFile(IFormFile file)
         {
            if(file is  null|| file.Length < 1)
