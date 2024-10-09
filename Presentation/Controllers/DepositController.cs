@@ -13,6 +13,12 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Text.Json;
 using Microsoft.AspNetCore.Http;
 using NLog.Targets;
+using System;
+using System.Net.Http.Headers;
+using System.Text;
+using System.Net.Http;
+using System.Web;
+using System.IO;
 
 namespace Presentation.Controllers
 {
@@ -99,6 +105,28 @@ public async Task<IActionResult> CreateDepositFromExcelData()
             }
             return Ok( new {FilePath=path});
 
+        }
+        public  async Task<IActionResult> TestApi()
+        {
+
+            var client = new HttpClient();
+
+
+            // Request headers
+
+            client.DefaultRequestHeaders.Add("Authorization", "!rh2mpVRzVvZX5c");
+
+            client.DefaultRequestHeaders.CacheControl = CacheControlHeaderValue.Parse("no-cache");
+
+            client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", "651b75c10a424a4f8ec5eec7d43dbcaf");
+            var uri = "https://sandbox.momodeveloper.mtn.com/disbursement/token/";
+
+
+            HttpResponseMessage response; response = await client.PostAsync(uri, content);
+        
+
+
+            return Ok(response);
         }
     }
 }
