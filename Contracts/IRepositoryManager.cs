@@ -7,7 +7,8 @@ using System.Threading.Tasks;
 namespace Contracts
 {
     public interface IRepositoryManager
-    { IWithdrawRepository WithdrawManager { get; }
+    { 
+        IWithdrawRepository WithdrawManager { get; }
         IDepositRepository DepositManager { get; }
       Task SaveAsync();
     }
