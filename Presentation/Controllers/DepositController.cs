@@ -106,27 +106,6 @@ public async Task<IActionResult> CreateDepositFromExcelData()
             return Ok( new {FilePath=path});
 
         }
-        public  async Task<IActionResult> TestApi()
-        {
-
-            var client = new HttpClient();
-
-
-            // Request headers
-
-            client.DefaultRequestHeaders.Add("Authorization", "!rh2mpVRzVvZX5c");
-
-            client.DefaultRequestHeaders.CacheControl = CacheControlHeaderValue.Parse("no-cache");
-
-            client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", "651b75c10a424a4f8ec5eec7d43dbcaf");
-            var uri = "https://sandbox.momodeveloper.mtn.com/disbursement/token/";
-
-
-            HttpResponseMessage response; response = await client.PostAsync(uri, content);
-        
-
-
-            return Ok(response);
-        }
+      
     }
 }
