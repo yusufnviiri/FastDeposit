@@ -104,7 +104,7 @@ namespace SaccoOps.Migrations
                             Amount = 3393000m,
                             Balance = 93000m,
                             Reason = "User Transaction",
-                            TransactionDate = "20/7/2025 - 22:10",
+                            TransactionDate = "23/7/2025 - 19:21",
                             UserId = "100"
                         },
                         new
@@ -113,7 +113,7 @@ namespace SaccoOps.Migrations
                             Amount = 9342000m,
                             Balance = 11100m,
                             Reason = "User Transaction",
-                            TransactionDate = "20/7/2025 - 22:10",
+                            TransactionDate = "23/7/2025 - 19:21",
                             UserId = "100"
                         },
                         new
@@ -122,7 +122,7 @@ namespace SaccoOps.Migrations
                             Amount = 5108000m,
                             Balance = 333700m,
                             Reason = "User Transaction",
-                            TransactionDate = "20/7/2025 - 22:10",
+                            TransactionDate = "23/7/2025 - 19:21",
                             UserId = "100"
                         },
                         new
@@ -131,7 +131,7 @@ namespace SaccoOps.Migrations
                             Amount = 88887100m,
                             Balance = 63800m,
                             Reason = "User Transaction",
-                            TransactionDate = "20/7/2025 - 22:10",
+                            TransactionDate = "23/7/2025 - 19:21",
                             UserId = "100"
                         },
                         new
@@ -140,7 +140,7 @@ namespace SaccoOps.Migrations
                             Amount = 78523000m,
                             Balance = 3000m,
                             Reason = "User Transaction",
-                            TransactionDate = "20/7/2025 - 22:10",
+                            TransactionDate = "23/7/2025 - 19:21",
                             UserId = "101"
                         },
                         new
@@ -149,7 +149,7 @@ namespace SaccoOps.Migrations
                             Amount = 465112000m,
                             Balance = 9200m,
                             Reason = "User Transaction",
-                            TransactionDate = "20/7/2025 - 22:10",
+                            TransactionDate = "23/7/2025 - 19:21",
                             UserId = "101"
                         },
                         new
@@ -158,7 +158,7 @@ namespace SaccoOps.Migrations
                             Amount = 76908000m,
                             Balance = 7372900m,
                             Reason = "User Transaction",
-                            TransactionDate = "20/7/2025 - 22:10",
+                            TransactionDate = "23/7/2025 - 19:21",
                             UserId = "101"
                         },
                         new
@@ -167,7 +167,7 @@ namespace SaccoOps.Migrations
                             Amount = 453547100m,
                             Balance = 83900m,
                             Reason = "User Transaction",
-                            TransactionDate = "20/7/2025 - 22:10",
+                            TransactionDate = "23/7/2025 - 19:21",
                             UserId = "101"
                         });
                 });
@@ -247,7 +247,7 @@ namespace SaccoOps.Migrations
                         {
                             Id = "100",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "c9d6408b-586d-4bed-98ff-34a99a7cf614",
+                            ConcurrencyStamp = "ea25f371-2e08-4a4c-bfd2-32028bf02c73",
                             Email = "admin@admin.com",
                             EmailConfirmed = true,
                             FirstName = "Romeru",
@@ -255,7 +255,7 @@ namespace SaccoOps.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@ADMIN.COM",
                             NormalizedUserName = "ADMIN@ADMIN.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEEVmqm006wMTL+SEhdd3/aUnJQpdxTdLIn+03ejN8rZWebspl8UqJJeV28P1H5ODRQ==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEBiL8hdWCR8pKxEHoF+6/sz6jCgYmbIXwGcCnXcJC9Die07BsrV2qsqkTX8FpCH2xg==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "",
                             TwoFactorEnabled = false,
@@ -265,7 +265,7 @@ namespace SaccoOps.Migrations
                         {
                             Id = "101",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "894dfb51-13ac-4c47-b41f-69297cb9a7be",
+                            ConcurrencyStamp = "3d021a60-4345-49b0-9302-7739a29dff9f",
                             Email = "member@member.com",
                             EmailConfirmed = true,
                             FirstName = "Dimitar",
@@ -273,7 +273,7 @@ namespace SaccoOps.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "MEMBER@MEMBER.COM",
                             NormalizedUserName = "MEMBER@MEMBER.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEArvWHfcgO9B99+pMKEAmIGswirLmwpMmWvb5zVLmx6el/2K2eDKYVZNw2b83jjEWw==",
+                            PasswordHash = "AQAAAAIAAYagAAAAED3Jxb6GY0K7I7460vOm3xKeA4szrbCeN3jhrRmbrqxehMq7YAH/WPEoaZQ3QE3HdQ==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "",
                             TwoFactorEnabled = false,
@@ -320,7 +320,7 @@ namespace SaccoOps.Migrations
                             Amount = 523000m,
                             Balance = 3000m,
                             Reason = "User Transaction",
-                            TransactionDate = "20/7/2025 - 22:10",
+                            TransactionDate = "23/7/2025 - 19:21",
                             UserId = "101"
                         },
                         new
@@ -329,7 +329,7 @@ namespace SaccoOps.Migrations
                             Amount = 112000m,
                             Balance = 9200m,
                             Reason = "User Transaction",
-                            TransactionDate = "20/7/2025 - 22:10",
+                            TransactionDate = "23/7/2025 - 19:21",
                             UserId = "101"
                         },
                         new
@@ -338,7 +338,7 @@ namespace SaccoOps.Migrations
                             Amount = 908000m,
                             Balance = 7372900m,
                             Reason = "User Transaction",
-                            TransactionDate = "20/7/2025 - 22:10",
+                            TransactionDate = "23/7/2025 - 19:21",
                             UserId = "101"
                         },
                         new
@@ -347,7 +347,7 @@ namespace SaccoOps.Migrations
                             Amount = 547100m,
                             Balance = 83900m,
                             Reason = "User Transaction",
-                            TransactionDate = "20/7/2025 - 22:10",
+                            TransactionDate = "23/7/2025 - 19:21",
                             UserId = "101"
                         },
                         new
@@ -356,7 +356,7 @@ namespace SaccoOps.Migrations
                             Amount = 523000m,
                             Balance = 3000m,
                             Reason = "User Transaction",
-                            TransactionDate = "20/7/2025 - 22:10",
+                            TransactionDate = "23/7/2025 - 19:21",
                             UserId = "100"
                         },
                         new
@@ -365,7 +365,7 @@ namespace SaccoOps.Migrations
                             Amount = 112000m,
                             Balance = 9200m,
                             Reason = "User Transaction",
-                            TransactionDate = "20/7/2025 - 22:10",
+                            TransactionDate = "23/7/2025 - 19:21",
                             UserId = "100"
                         },
                         new
@@ -374,7 +374,7 @@ namespace SaccoOps.Migrations
                             Amount = 908000m,
                             Balance = 7372900m,
                             Reason = "User Transaction",
-                            TransactionDate = "20/7/2025 - 22:10",
+                            TransactionDate = "23/7/2025 - 19:21",
                             UserId = "100"
                         },
                         new
@@ -383,7 +383,7 @@ namespace SaccoOps.Migrations
                             Amount = 547100m,
                             Balance = 83900m,
                             Reason = "User Transaction",
-                            TransactionDate = "20/7/2025 - 22:10",
+                            TransactionDate = "23/7/2025 - 19:21",
                             UserId = "100"
                         });
                 });
